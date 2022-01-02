@@ -11,5 +11,8 @@
     "start": "npx nullstack start",
     "build": "npx nullstack build --mode=ssr"
   },
-  "main": "index.js"
+  "main": "index.js",
+  "dependencies": {
+    "lodash-es": "^4.17.21"
+  }
 }

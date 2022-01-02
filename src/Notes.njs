@@ -1,12 +1,22 @@
 import Nullstack from 'nullstack';
+import { debounce } from 'lodash-es';
 import './Notes.scss';
 
 class Home extends Nullstack {
-  notes = '[] do something cool';
+  notes = '';
   todos = [];
+  save;
 
   async hydrate() {
+    this.notes = window.localStorage.getItem('my-note');
+    this.save = debounce(this.saveNotes, 1000);
     this.processText();
+  }
+
+  saveNotes() {
+    console.log('------> SAVE NOTES');
+
+    window.localStorage.setItem('my-note', this.notes);
   }
 
   processText() {
@@ -18,6 +28,8 @@ class Home extends Nullstack {
       const firstNewlineIndex = match.input.indexOf('\n', match.index) || undefined;
       return match.input.substring(match.index, firstNewlineIndex > 0 ? firstNewlineIndex : undefined);
     });
+
+    this.save();
   }
 
   renderTodo({ todo }) {

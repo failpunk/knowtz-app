@@ -1,6 +1,5 @@
 import Nullstack from 'nullstack'
-import './tailwind.css'
-import './Application.scss'
+import './tailwinds.css'
 import Notes from './Notes'
 
 class Application extends Nullstack {
@@ -19,7 +18,7 @@ class Application extends Nullstack {
 
   render() {
     return (
-      <main>
+      <main class="dark">
         <Head />
         <Notes route="/" />
       </main>

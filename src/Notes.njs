@@ -1,6 +1,5 @@
 import Nullstack from 'nullstack'
 import { debounce } from 'lodash-es'
-import './Notes.scss'
 
 class Home extends Nullstack {
   notes = ''
@@ -59,21 +58,34 @@ class Home extends Nullstack {
     if (!todo) return false
 
     return (
-      <li class={`todo ${(todo.isComplete &&= 'isComplete')}`} todo={todo} onclick={this.toggleTodo}>
-        {todo.text}
-      </li>
+      // <li class={`todo ${(todo.isComplete &&= 'isComplete')}`} todo={todo} onclick={this.toggleTodo}>
+      //   {todo.text}
+      // </li>
+
+      <div class="relative flex items-start py-4">
+        <div class="min-w-0 flex-1 text-sm">
+          <label for="person-2" class="font-medium text-gray-700 select-none">
+            {todo.text}
+          </label>
+        </div>
+        <div class="ml-3 flex items-center h-5">
+          <input id="person-2" name="person-2" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
+        </div>
+      </div>
     )
   }
 
   renderTodosList() {
     return (
       <>
-        <h2>Todos:</h2>
-        <ul>
-          {this.todos.map((todo) => (
-            <Todo todo={todo} />
-          ))}
-        </ul>
+        <fieldset>
+          <legend class="text-lg font-medium text-gray-900">Todos:</legend>
+          <div class="mt-4 border-t border-b border-gray-200 divide-y divide-gray-200">
+            {this.todos.map((todo) => (
+              <Todo todo={todo} />
+            ))}
+          </div>
+        </fieldset>
       </>
     )
   }
@@ -85,8 +97,22 @@ class Home extends Nullstack {
           <TodosList />
         </aside>
         <article>
-          <h1>Notes</h1>
-          <textarea bind={this.notes} oninput={this.processText}></textarea>
+          <div>
+            <label for="comment" class="block text-sm font-medium text-gray-700">
+              Notes
+            </label>
+            <div class="mt-1">
+              <textarea
+                bind={this.notes}
+                oninput={this.processText}
+                rows="4"
+                name="comment"
+                id="comment"
+                class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md bg-slate-50"
+              ></textarea>
+            </div>
+          </div>
+          {/* <textarea bind={this.notes} oninput={this.processText}></textarea> */}
         </article>
       </section>
     )

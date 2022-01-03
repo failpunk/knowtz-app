@@ -19,8 +19,19 @@ class Home extends Nullstack {
   }
 
   toggleTodo({ todo }) {
-    console.log('------> toggleTodo', todo);
     todo.isComplete = !todo.isComplete;
+
+    const replacement = todo.isComplete ? '[X]' : '[]';
+    const toBeReplaced = todo.isComplete ? '[]' : '[X]';
+
+    const oldText = todo.text;
+
+    // update todo list text
+    todo.text = todo.text.replace(toBeReplaced, replacement);
+    // update noriginal note text
+    this.notes = this.notes.replace(oldText, todo.text);
+
+    this.saveNotes();
   }
 
   processText() {
@@ -36,6 +47,7 @@ class Home extends Nullstack {
         text: text,
         startIndex: match.index,
         endIndex: firstNewlineIndex,
+        length: firstNewlineIndex - match.index,
         isComplete: false,
       };
     });
@@ -46,16 +58,9 @@ class Home extends Nullstack {
   renderTodo({ todo }) {
     if (!todo) return false;
 
-    let renderedText = todo.text;
-
-    if (todo.isComplete) {
-      const [, text] = todo.text.split(']');
-      renderedText = '[X]' + text;
-    }
-
     return (
       <li class={`todo ${(todo.isComplete &&= 'isComplete')}`} todo={todo} onclick={this.toggleTodo}>
-        {renderedText}
+        {todo.text}
       </li>
     );
   }

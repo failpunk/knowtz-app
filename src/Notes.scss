@@ -19,8 +19,9 @@ article {
     margin-top: 1em;
     display: block;
   }
-  
-  h1, blockquote {
+
+  h1,
+  blockquote {
     font-family: 'Crete Round', serif;
     letter-spacing: 1px;
   }
@@ -41,5 +42,14 @@ textarea {
 @media (max-width: 768px) {
   section {
     flex-wrap: wrap;
+  }
+}
+
+.todo {
+  margin-bottom: 3px;
+  cursor: pointer;
+
+  &.isComplete {
+    text-decoration: line-through;
   }
 }

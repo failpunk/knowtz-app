@@ -15,8 +15,12 @@ class Home extends Nullstack {
 
   saveNotes() {
     console.log('------> SAVE NOTES');
-
     window.localStorage.setItem('my-note', this.notes);
+  }
+
+  toggleTodo({ todo }) {
+    console.log('------> toggleTodo', todo);
+    todo.isComplete = !todo.isComplete;
   }
 
   processText() {
@@ -26,7 +30,14 @@ class Home extends Nullstack {
     // parse each match for just the todo text.
     this.todos = matches.map((match) => {
       const firstNewlineIndex = match.input.indexOf('\n', match.index) || undefined;
-      return match.input.substring(match.index, firstNewlineIndex > 0 ? firstNewlineIndex : undefined);
+      const text = match.input.substring(match.index, firstNewlineIndex > 0 ? firstNewlineIndex : undefined);
+
+      return {
+        text: text,
+        startIndex: match.index,
+        endIndex: firstNewlineIndex,
+        isComplete: false,
+      };
     });
 
     this.save();
@@ -35,7 +46,18 @@ class Home extends Nullstack {
   renderTodo({ todo }) {
     if (!todo) return false;
 
-    return <li> {todo} </li>;
+    let renderedText = todo.text;
+
+    if (todo.isComplete) {
+      const [, text] = todo.text.split(']');
+      renderedText = '[X]' + text;
+    }
+
+    return (
+      <li class={`todo ${(todo.isComplete &&= 'isComplete')}`} todo={todo} onclick={this.toggleTodo}>
+        {renderedText}
+      </li>
+    );
   }
 
   renderTodosList() {

@@ -11,13 +11,17 @@ class Home extends Nullstack {
   }
 
   saveNotes() {
-    console.log('------> NOTES SAVED');
+    console.log('------> NOTES SAVED')
     window.localStorage.setItem('my-note', this.notes)
   }
 
   noteUpdated(context) {
     context.notes = this.notes
     this.save()
+  }
+
+  async update(context) {
+    this.notes = context.notes
   }
 
   renderTextarea() {

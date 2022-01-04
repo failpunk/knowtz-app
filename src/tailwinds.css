@@ -6981,13 +6981,13 @@ select {
   border-color: rgba(229, 231, 235, var(--tw-border-opacity));
 }
 
+.border-transparent {
+  border-color: transparent;
+}
+
 .border-gray-300 {
   --tw-border-opacity: 1;
   border-color: rgba(209, 213, 219, var(--tw-border-opacity));
-}
-
-.border-transparent {
-  border-color: transparent;
 }
 
 .bg-gray-600 {
@@ -7212,7 +7212,7 @@ select {
 body {
   background-color: #2d3748;
   color: #fff;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Anonymous Pro', monospace;
 }
 
 a {

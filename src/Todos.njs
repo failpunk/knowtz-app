@@ -10,7 +10,7 @@ class Home extends Nullstack {
   }
 
   toggleTodo(context) {
-    const { todo, notes } = context
+    const { todo, notes, saveNotes } = context
 
     todo.isComplete = !todo.isComplete
 
@@ -24,6 +24,9 @@ class Home extends Nullstack {
 
     // update noriginal note text
     context.notes = notes.replace(oldText, todo.originalText)
+
+    // Save updated note text
+    saveNotes()
   }
 
   async update() {
@@ -63,13 +66,7 @@ class Home extends Nullstack {
   renderTodo({ todo }) {
     if (!todo) return false
 
-    console.log('------> todo.isComplete', todo)
-
     return (
-      // <li class={`todo ${(todo.isComplete &&= 'isComplete')}`} todo={todo} onclick={this.toggleTodo}>
-      //   {todo.text}
-      // </li>
-
       <div class="relative flex items-start py-4">
         <div class="ml-3 flex items-center h-5 mr-2">
           <input

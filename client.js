@@ -5,7 +5,12 @@ const context = Nullstack.start(Application)
 
 // Read notes from localStorage
 context.notes = window.localStorage.getItem('my-note') || ''
-context.todos = []
+context.saveNotes = saveNotes
+
+function saveNotes() {
+  console.log('------> NOTES SAVED')
+  window.localStorage.setItem('my-note', context.notes)
+}
 
 context.start = async function start() {}
 

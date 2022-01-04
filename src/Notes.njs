@@ -5,14 +5,9 @@ class Home extends Nullstack {
   notes = ''
   save
 
-  async hydrate({ notes }) {
+  async hydrate({ notes, saveNotes }) {
     this.notes = notes
-    this.save = debounce(this.saveNotes, 1000)
-  }
-
-  saveNotes() {
-    console.log('------> NOTES SAVED')
-    window.localStorage.setItem('my-note', this.notes)
+    this.save = debounce(saveNotes, 1000)
   }
 
   noteUpdated(context) {
@@ -21,6 +16,7 @@ class Home extends Nullstack {
   }
 
   async update(context) {
+    console.log('------> NOTES UPDATED')
     this.notes = context.notes
   }
 

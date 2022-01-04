@@ -32,10 +32,30 @@ class Home extends Nullstack {
 
   searchNotesForTodos({ notes }) {
     // searching for []
-    const matches = [...notes.matchAll(/\[\]/g)]
+    const matchesComplete = [...notes.matchAll(/\[X\]/g)]
+    const matchesIncomplete = [...notes.matchAll(/\[\]/g)]
 
     // parse each match for just the todo text.
-    this.todos = matches.map((match) => {
+    const parsedComplete = matchesComplete.map((match) => {
+      const firstNewlineIndex = match.input.indexOf('\n', match.index) || undefined
+      const textWithBrackets = match.input.substring(match.index, firstNewlineIndex > 0 ? firstNewlineIndex : undefined)
+
+      // Remove []
+      let textWithoutBrackets = textWithBrackets.replace(`${UNCHECKED_BRACKET} `, '')
+      textWithoutBrackets = textWithoutBrackets.replace(`${CHECKED_BRACKET} `, '')
+
+      return {
+        originalText: textWithBrackets,
+        text: textWithoutBrackets,
+        startIndex: match.index,
+        endIndex: firstNewlineIndex,
+        length: firstNewlineIndex - match.index,
+        isComplete: true,
+      }
+    })
+
+    // parse each match for just the todo text.
+    const parsedIncomplete = matchesIncomplete.map((match) => {
       const firstNewlineIndex = match.input.indexOf('\n', match.index) || undefined
       const textWithBrackets = match.input.substring(match.index, firstNewlineIndex > 0 ? firstNewlineIndex : undefined)
 
@@ -52,10 +72,14 @@ class Home extends Nullstack {
         isComplete: false,
       }
     })
+
+    this.todos = [...parsedIncomplete, ...parsedComplete]
   }
 
   renderTodo({ todo }) {
     if (!todo) return false
+
+    console.log('------> todo.isComplete', todo)
 
     return (
       // <li class={`todo ${(todo.isComplete &&= 'isComplete')}`} todo={todo} onclick={this.toggleTodo}>
@@ -64,7 +88,15 @@ class Home extends Nullstack {
 
       <div class="relative flex items-start py-4">
         <div class="ml-3 flex items-center h-5 mr-2">
-          <input id="person-2" name="person-2" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" todo={todo} onclick={this.toggleTodo} />
+          <input
+            checked={todo.isComplete}
+            id="person-2"
+            name="person-2"
+            type="checkbox"
+            class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+            todo={todo}
+            onclick={this.toggleTodo}
+          />
         </div>
         <div class="min-w-0 flex-1 text-sm">
           <label for="person-2" class="font-medium text-gray-700 select-none">

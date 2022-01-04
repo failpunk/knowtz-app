@@ -67,7 +67,7 @@ class Home extends Nullstack {
     if (!todo) return false
 
     return (
-      <div class="relative flex items-start py-4">
+      <div class="relative flex items-start py-4 border-gray-300">
         <div class="ml-3 flex items-center h-5 mr-2">
           <input
             checked={todo.isComplete}
@@ -80,7 +80,7 @@ class Home extends Nullstack {
           />
         </div>
         <div class="min-w-0 flex-1 text-sm">
-          <label for="person-2" class="font-medium text-gray-700 select-none">
+          <label for="person-2" class={`font-medium text-gray-700 select-none ${(todo.isComplete &&= 'line-through opacity-60')}`}>
             {todo.text}
           </label>
         </div>
@@ -92,7 +92,7 @@ class Home extends Nullstack {
     return (
       <fieldset>
         <legend class="text-lg font-medium text-gray-900">Todos:</legend>
-        <div class="mt-4 border-t border-b border-gray-200 divide-y divide-gray-200">
+        <div class="mt-4 border-t border-b border-gray-300 divide-y divide-gray-300">
           {this.todos.map((todo) => (
             <Todo todo={todo} />
           ))}

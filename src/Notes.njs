@@ -16,7 +16,6 @@ class Home extends Nullstack {
   }
 
   async update(context) {
-    console.log('------> NOTES UPDATED')
     this.notes = context.notes
   }
 
@@ -28,7 +27,7 @@ class Home extends Nullstack {
         rows="4"
         name="comment"
         id="comment"
-        class="h-screen shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md bg-slate-50"
+        class="h-screen border-none block w-full sm:text-sm p-0 border-transparent focus:border-transparent focus:ring-0"
       ></textarea>
     )
   }
@@ -38,7 +37,7 @@ class Home extends Nullstack {
       <section>
         <article>
           <div>
-            <label for="comment" class="block text-sm font-medium text-gray-700">
+            <label for="comment" class="block text-2xl font-medium text-gray-700 border-b-2 mb-7">
               Notes
             </label>
             <div class="mt-1">

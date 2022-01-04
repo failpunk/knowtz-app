@@ -36,44 +36,28 @@ class Home extends Nullstack {
     const matchesIncomplete = [...notes.matchAll(/\[\]/g)]
 
     // parse each match for just the todo text.
-    const parsedComplete = matchesComplete.map((match) => {
-      const firstNewlineIndex = match.input.indexOf('\n', match.index) || undefined
-      const textWithBrackets = match.input.substring(match.index, firstNewlineIndex > 0 ? firstNewlineIndex : undefined)
-
-      // Remove []
-      let textWithoutBrackets = textWithBrackets.replace(`${UNCHECKED_BRACKET} `, '')
-      textWithoutBrackets = textWithoutBrackets.replace(`${CHECKED_BRACKET} `, '')
-
-      return {
-        originalText: textWithBrackets,
-        text: textWithoutBrackets,
-        startIndex: match.index,
-        endIndex: firstNewlineIndex,
-        length: firstNewlineIndex - match.index,
-        isComplete: true,
-      }
-    })
-
-    // parse each match for just the todo text.
-    const parsedIncomplete = matchesIncomplete.map((match) => {
-      const firstNewlineIndex = match.input.indexOf('\n', match.index) || undefined
-      const textWithBrackets = match.input.substring(match.index, firstNewlineIndex > 0 ? firstNewlineIndex : undefined)
-
-      // Remove []
-      let textWithoutBrackets = textWithBrackets.replace(`${UNCHECKED_BRACKET} `, '')
-      textWithoutBrackets = textWithoutBrackets.replace(`${CHECKED_BRACKET} `, '')
-
-      return {
-        originalText: textWithBrackets,
-        text: textWithoutBrackets,
-        startIndex: match.index,
-        endIndex: firstNewlineIndex,
-        length: firstNewlineIndex - match.index,
-        isComplete: false,
-      }
-    })
+    const parsedComplete = matchesComplete.map((match) => this.parseTodo({ match, isComplete: true }))
+    const parsedIncomplete = matchesIncomplete.map((match) => this.parseTodo({ match, isComplete: false }))
 
     this.todos = [...parsedIncomplete, ...parsedComplete]
+  }
+
+  parseTodo({ match, isComplete }) {
+    const firstNewlineIndex = match.input.indexOf('\n', match.index) || undefined
+    const textWithBrackets = match.input.substring(match.index, firstNewlineIndex > 0 ? firstNewlineIndex : undefined)
+
+    // Remove brackets
+    let textWithoutBrackets = textWithBrackets.replace(`${UNCHECKED_BRACKET} `, '')
+    textWithoutBrackets = textWithoutBrackets.replace(`${CHECKED_BRACKET} `, '')
+
+    return {
+      originalText: textWithBrackets,
+      text: textWithoutBrackets,
+      startIndex: match.index,
+      endIndex: firstNewlineIndex,
+      length: firstNewlineIndex - match.index,
+      isComplete: isComplete,
+    }
   }
 
   renderTodo({ todo }) {

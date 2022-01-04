@@ -13,7 +13,7 @@
   "scripts": {
     "start": "npx nullstack start",
     "dev": "npx nullstack start && yarn tailwind-watch",
-    "build": "npm run tailwind && npx nullstack build --mode=ssr",
+    "build": "npm run tailwind && npx nullstack build --mode=spa --output=spa",
     "tailwind": "npx tailwindcss-cli build -i src/Application.css -o src/tailwinds.css",
     "tailwind-watch": "npx tailwindcss-cli build -i src/Application.css -o src/tailwinds.css --watch"
   },

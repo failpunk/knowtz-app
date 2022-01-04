@@ -1,10 +1,12 @@
-import Nullstack from 'nullstack';
-import Application from './src/Application';
+import Nullstack from 'nullstack'
+import Application from './src/Application'
 
-const context = Nullstack.start(Application);
+const context = Nullstack.start(Application)
 
-context.start = async function start() {
-  // https://nullstack.app/application-startup
-}
+// Read notes from localStorage
+context.notes = window.localStorage.getItem('my-note') || ''
+context.todos = []
 
-export default context;
+context.start = async function start() {}
+
+export default context

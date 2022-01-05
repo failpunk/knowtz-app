@@ -7128,6 +7128,16 @@ select {
   color: rgba(79, 70, 229, var(--tw-text-opacity));
 }
 
+.text-gray-600 {
+  --tw-text-opacity: 1;
+  color: rgba(75, 85, 99, var(--tw-text-opacity));
+}
+
+.text-gray-400 {
+  --tw-text-opacity: 1;
+  color: rgba(156, 163, 175, var(--tw-text-opacity));
+}
+
 .line-through {
   text-decoration: line-through;
 }
@@ -7151,7 +7161,17 @@ select {
   transition-property: background-color, border-color, color, fill, stroke;
 }
 
+.nightwind .text-gray-400 {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
 .nightwind .text-gray-500 {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
+.nightwind .text-gray-600 {
   transition-duration: 300ms;
   transition-property: background-color, border-color, color, fill, stroke;
 }
@@ -7236,12 +7256,34 @@ textarea {
   color: rgba(17, 24, 39, var(--tw-text-opacity));
 }
 
+.hover\:dark:hover .hover\:bg-gray-50:hover {
+  background-color: rgba(17, 24, 39, var(--tw-bg-opacity));
+}
+
+.hover\:dark:hover .hover\:bg-gray-50:hover.hover\:nightwind-prevent:hover {
+  background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
+}
+
+.hover\:dark:hover .hover\:nightwind-prevent-block:hover .hover\:bg-gray-50:hover {
+  background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
+}
+
+.hover\:bg-gray-50:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
+}
+
 .hover\:text-gray-900:hover {
   --tw-text-opacity: 1;
   color: rgba(17, 24, 39, var(--tw-text-opacity));
 }
 
 .hover\:nightwind:hover .hover\:text-gray-900:hover {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
+.hover\:nightwind:hover .hover\:bg-gray-50:hover {
   transition-duration: 300ms;
   transition-property: background-color, border-color, color, fill, stroke;
 }
@@ -7286,6 +7328,18 @@ textarea {
   transition-property: background-color, border-color, color, fill, stroke;
 }
 
+.group:hover .group-hover\:dark .group-hover\:text-gray-500 {
+  color: rgba(156, 163, 175, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:dark .group-hover\:text-gray-500.group-hover\:nightwind-prevent {
+  color: rgba(107, 114, 128, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:dark .group-hover\:nightwind-prevent-block .group-hover\:text-gray-500 {
+  color: rgba(107, 114, 128, var(--tw-text-opacity));
+}
+
 .group:hover .group-hover\:dark .group-hover\:text-gray-700 {
   color: rgba(229, 231, 235, var(--tw-text-opacity));
 }
@@ -7318,6 +7372,16 @@ textarea {
 .group:hover .group-hover\:text-gray-700 {
   --tw-text-opacity: 1;
   color: rgba(55, 65, 81, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:text-gray-500 {
+  --tw-text-opacity: 1;
+  color: rgba(107, 114, 128, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:nightwind .group-hover\:text-gray-500 {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
 }
 
 .group:hover .group-hover\:nightwind .group-hover\:text-gray-700 {

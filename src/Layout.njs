@@ -1,37 +1,58 @@
 import Nullstack from 'nullstack'
-
+import BookSvg from './svg/BookSvg'
+import PlusSvg from './svg/PlusSvg'
+import { createNewNote, fetchNote, fetchNotes } from './services/database'
 export default class Layout extends Nullstack {
   user = 'Justin Vencel'
   avatarUrl = 'https://avatars.githubusercontent.com/u/1109167?v=4'
-  notes = ['New Note', 'Another Note']
-  selectedNote = 'New Note'
+  notes = []
+  currentNote = {}
 
-  renderNotesList() {
+  createNote(context) {
+    createNewNote()
+    const notes = fetchNotes()
+    context.notes = notes
+  }
+
+  selectNote(context) {
+    const { note } = context
+    context.currentNote = { ...note, text: fetchNote(note.hash) }
+  }
+
+  update({ notes, currentNote }) {
+    console.log('------> LAYOUT UPDATE', notes, currentNote)
+    this.notes = notes
+    this.currentNote = currentNote
+  }
+
+  hydrate({ notes }) {
+    this.notes = notes
+  }
+
+  renderNotesList({ currentNote }) {
     return (
       <nav class="mt-5 flex-1" aria-label="Sidebar">
         <div class="px-2 space-y-1">
           {this.notes.map((note) => (
-            <NavItem text={note} isActive={note === this.selectedNote} />
+            <NavItem note={note} isActive={note.hash === this.currentNote.hash} />
           ))}
+
+          <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md" onclick={this.createNote}>
+            <PlusSvg />
+            Create New Note
+          </a>
         </div>
       </nav>
     )
   }
 
-  renderNavItem({ text, isActive }) {
+  renderNavItem({ note, isActive = false }) {
     const css = isActive ? 'bg-gray-200 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
 
     return (
-      <a href="#" class={`${css} group flex items-center px-2 py-2 text-sm font-medium rounded-md`}>
-        <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-500 mr-3 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-          />
-        </svg>
-        {text}
+      <a href="#" class={`${css} group flex items-center px-2 py-2 text-sm font-medium rounded-md`} note={note} onclick={this.selectNote}>
+        <BookSvg />
+        {note.name}
       </a>
     )
   }

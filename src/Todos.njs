@@ -33,10 +33,12 @@ class Home extends Nullstack {
     this.searchNotesForTodos()
   }
 
-  searchNotesForTodos({ notes }) {
+  searchNotesForTodos({ currentNote = {} }) {
+    if (!currentNote || !currentNote.text) return
+
     // searching for []
-    const matchesComplete = [...notes.matchAll(/\[X\]/g)]
-    const matchesIncomplete = [...notes.matchAll(/\[\]/g)]
+    const matchesComplete = [...currentNote.text.matchAll(/\[X\]/g)]
+    const matchesIncomplete = [...currentNote.text.matchAll(/\[\]/g)]
 
     // parse each match for just the todo text.
     const parsedComplete = matchesComplete.map((match) => this.parseTodo({ match, isComplete: true }))

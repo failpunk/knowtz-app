@@ -5,8 +5,11 @@ import Notes from './Notes'
 import Todos from './Todos'
 
 class Application extends Nullstack {
+  selectedNote
+
   prepare(context) {
     context.page.locale = 'en-US'
+    context.page.title = 'Knowtz'
   }
 
   renderHead() {

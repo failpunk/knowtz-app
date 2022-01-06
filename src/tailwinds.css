@@ -6724,6 +6724,10 @@ select {
   z-index: 0;
 }
 
+.mt-5 {
+  margin-top: 1.25rem;
+}
+
 .-mr-12 {
   margin-right: -3rem;
 }
@@ -6732,20 +6736,12 @@ select {
   margin-left: 0.25rem;
 }
 
-.mt-5 {
-  margin-top: 1.25rem;
-}
-
 .mr-4 {
   margin-right: 1rem;
 }
 
 .ml-3 {
   margin-left: 0.75rem;
-}
-
-.mr-3 {
-  margin-right: 0.75rem;
 }
 
 .-mr-3 {
@@ -6766,6 +6762,10 @@ select {
 
 .mt-4 {
   margin-top: 1rem;
+}
+
+.mr-3 {
+  margin-right: 0.75rem;
 }
 
 .block {
@@ -6940,12 +6940,12 @@ select {
   overflow-y: auto;
 }
 
-.rounded-full {
-  border-radius: 9999px;
-}
-
 .rounded-md {
   border-radius: 0.375rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
 }
 
 .rounded-lg {
@@ -6990,6 +6990,11 @@ select {
   border-color: rgba(209, 213, 219, var(--tw-border-opacity));
 }
 
+.bg-gray-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
+}
+
 .bg-gray-600 {
   --tw-bg-opacity: 1;
   background-color: rgba(75, 85, 99, var(--tw-bg-opacity));
@@ -7003,11 +7008,6 @@ select {
 .bg-gray-100 {
   --tw-bg-opacity: 1;
   background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
-}
-
-.bg-gray-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
 }
 
 .bg-gray-50 {
@@ -7027,11 +7027,6 @@ select {
   padding: 0px;
 }
 
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -7040,6 +7035,11 @@ select {
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .py-1\.5 {
@@ -7074,14 +7074,14 @@ select {
   padding-bottom: 1rem;
 }
 
-.text-base {
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .text-xs {
@@ -7103,14 +7103,19 @@ select {
   font-weight: 500;
 }
 
-.text-white {
+.text-gray-600 {
   --tw-text-opacity: 1;
-  color: rgba(255, 255, 255, var(--tw-text-opacity));
+  color: rgba(75, 85, 99, var(--tw-text-opacity));
 }
 
 .text-gray-900 {
   --tw-text-opacity: 1;
   color: rgba(17, 24, 39, var(--tw-text-opacity));
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
 }
 
 .text-gray-500 {
@@ -7126,16 +7131,6 @@ select {
 .text-indigo-600 {
   --tw-text-opacity: 1;
   color: rgba(79, 70, 229, var(--tw-text-opacity));
-}
-
-.text-gray-600 {
-  --tw-text-opacity: 1;
-  color: rgba(75, 85, 99, var(--tw-text-opacity));
-}
-
-.text-gray-400 {
-  --tw-text-opacity: 1;
-  color: rgba(156, 163, 175, var(--tw-text-opacity));
 }
 
 .line-through {
@@ -7157,11 +7152,6 @@ select {
 }
 
 .nightwind .bg-white {
-  transition-duration: 300ms;
-  transition-property: background-color, border-color, color, fill, stroke;
-}
-
-.nightwind .text-gray-400 {
   transition-duration: 300ms;
   transition-property: background-color, border-color, color, fill, stroke;
 }
@@ -7328,18 +7318,6 @@ textarea {
   transition-property: background-color, border-color, color, fill, stroke;
 }
 
-.group:hover .group-hover\:dark .group-hover\:text-gray-500 {
-  color: rgba(156, 163, 175, var(--tw-text-opacity));
-}
-
-.group:hover .group-hover\:dark .group-hover\:text-gray-500.group-hover\:nightwind-prevent {
-  color: rgba(107, 114, 128, var(--tw-text-opacity));
-}
-
-.group:hover .group-hover\:dark .group-hover\:nightwind-prevent-block .group-hover\:text-gray-500 {
-  color: rgba(107, 114, 128, var(--tw-text-opacity));
-}
-
 .group:hover .group-hover\:dark .group-hover\:text-gray-700 {
   color: rgba(229, 231, 235, var(--tw-text-opacity));
 }
@@ -7372,16 +7350,6 @@ textarea {
 .group:hover .group-hover\:text-gray-700 {
   --tw-text-opacity: 1;
   color: rgba(55, 65, 81, var(--tw-text-opacity));
-}
-
-.group:hover .group-hover\:text-gray-500 {
-  --tw-text-opacity: 1;
-  color: rgba(107, 114, 128, var(--tw-text-opacity));
-}
-
-.group:hover .group-hover\:nightwind .group-hover\:text-gray-500 {
-  transition-duration: 300ms;
-  transition-property: background-color, border-color, color, fill, stroke;
 }
 
 .group:hover .group-hover\:nightwind .group-hover\:text-gray-700 {

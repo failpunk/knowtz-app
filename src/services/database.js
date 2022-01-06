@@ -19,13 +19,21 @@ export function fetchNote(noteKey) {
 }
 
 export function saveNote({ hash, text }) {
-  // console.log('------> DATABASE saveNote', hash, text)
   const lookup = `${NOTES_KEY}-${hash}`
   return window.localStorage.setItem(lookup, text)
 }
 
+// Delete note and from list
+export function deleteNote(hash) {
+  const lookup = `${NOTES_KEY}-${hash}`
+  const remaining = fetchNotes().filter((note) => note.hash !== hash)
+  window.localStorage.removeItem(lookup)
+  saveNotes(remaining)
+}
+
 export function findNote() {}
 
+// Crate note and add to list
 export function createNewNote() {
   const existingNotes = fetchNotes()
   const name = `My New Note ${parseInt(existingNotes.length) + 1}`

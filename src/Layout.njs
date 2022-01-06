@@ -2,6 +2,7 @@ import Nullstack from 'nullstack'
 import BookSvg from './svg/BookSvg'
 import PlusSvg from './svg/PlusSvg'
 import { createNewNote, fetchNote, fetchNotes } from './services/database'
+
 export default class Layout extends Nullstack {
   user = 'Justin Vencel'
   avatarUrl = 'https://avatars.githubusercontent.com/u/1109167?v=4'

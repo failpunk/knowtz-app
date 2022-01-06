@@ -1,16 +1,24 @@
 import Nullstack from 'nullstack'
+import { saveNote } from './services/database'
 
 const UNCHECKED_BRACKET = '[]'
 const CHECKED_BRACKET = '[X]'
 export default class Todos extends Nullstack {
   todos = []
+  notes = []
 
-  async hydrate() {
+  async hydrate({ notes }) {
+    this.notes = notes
+    this.searchNotesForTodos()
+  }
+
+  async update({ notes }) {
+    this.notes = notes
     this.searchNotesForTodos()
   }
 
   toggleTodo(context) {
-    const { todo, notes, saveNotes } = context
+    const { todo, currentNote, saveNotes } = context
 
     todo.isComplete = !todo.isComplete
 
@@ -23,14 +31,10 @@ export default class Todos extends Nullstack {
     todo.originalText = todo.originalText.replace(toBeReplaced, replacement)
 
     // update noriginal note text
-    context.notes = notes.replace(oldText, todo.originalText)
+    context.currentNote.text = currentNote.text.replace(oldText, todo.originalText)
 
     // Save updated note text
-    saveNotes()
-  }
-
-  async update() {
-    this.searchNotesForTodos()
+    saveNote({ hash: currentNote.hash, text: currentNote.text })
   }
 
   searchNotesForTodos({ currentNote = {} }) {

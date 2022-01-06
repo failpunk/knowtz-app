@@ -1,21 +1,24 @@
 import Nullstack from 'nullstack'
 import { debounce } from 'lodash-es'
+import { saveNote } from './services/database'
 
 class Home extends Nullstack {
   note = { text: '', name: '' }
   save
 
-  async hydrate({ currentNote, saveNotes }) {
+  async hydrate({ currentNote }) {
     console.log('------> NOTES HYDRATE', currentNote)
     if (currentNote) {
       this.note = currentNote
     }
-    this.save = debounce(saveNotes, 1000) // todo: move to client???
+    this.save = debounce(saveNote, 1000) // todo: move to client???
   }
 
-  noteUpdated() {
-    context.currentNote.text = this.note.text
-    this.save()
+  handleNoteUpdated(context) {
+    context.currentNote = this.note
+    console.log('------> handleNoteUpdated', this.note, this.note.hash)
+    const { hash, text } = this.note
+    this.save({ hash, text })
   }
 
   async update({ currentNote }) {
@@ -29,7 +32,7 @@ class Home extends Nullstack {
     return (
       <textarea
         bind={this.note.text}
-        oninput={this.noteUpdated}
+        oninput={this.handleNoteUpdated}
         rows="4"
         name="comment"
         id="comment"

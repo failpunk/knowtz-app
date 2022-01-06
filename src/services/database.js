@@ -1,4 +1,5 @@
 import shortHash from 'short-hash'
+
 const NOTES_KEY = 'knowtz'
 
 export function fetchNotes() {
@@ -17,8 +18,10 @@ export function fetchNote(noteKey) {
   return window.localStorage.getItem(lookup) || ''
 }
 
-export function saveNote(key, text) {
-  return window.localStorage.setItem(key, text)
+export function saveNote({hash, text}) {
+  console.log('------> DATABASE saveNote', hash, text)
+  const lookup = `${NOTES_KEY}-${hash}`
+  return window.localStorage.setItem(lookup, text)
 }
 
 export function findNote() {}
@@ -38,6 +41,5 @@ export function createNewNote() {
   saveNotes(existingNotes)
 
   // Save actual note
-  const lookup = `${NOTES_KEY}-${hash}`
-  saveNote(lookup, '')
+  saveNote(hash, '')
 }

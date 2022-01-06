@@ -22,7 +22,7 @@ export default class Layout extends Nullstack {
   update({ notes, currentNote }) {
     console.log('------> LAYOUT UPDATE', notes, currentNote)
     this.notes = notes
-    this.currentNote = currentNote
+    this.currentNote = currentNote || {}
   }
 
   hydrate({ notes }) {

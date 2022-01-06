@@ -1,8 +1,9 @@
 import Nullstack from 'nullstack'
+import SparkleSvg from './svg/SparkleSvg'
 import { debounce } from 'lodash-es'
 import { saveNote } from './services/database'
 
-class Home extends Nullstack {
+export default class Home extends Nullstack {
   note = { text: '', name: '' }
   save
 
@@ -39,22 +40,37 @@ class Home extends Nullstack {
     )
   }
 
+  renderSplash() {
+    return (
+      <div class="flex justify-center items-center h-screen">
+        <div class="block text-center">
+          <div class="mb-5">
+            <SparkleSvg />
+          </div>
+          Add Your First Note
+        </div>
+      </div>
+    )
+  }
+
+  renderNote() {
+    return (
+      <div>
+        <label for="comment" class="block text-2xl font-medium text-gray-700 border-b-2 mb-7">
+          {this.note.name}
+        </label>
+        <div class="mt-1">
+          <Textarea />
+        </div>
+      </div>
+    )
+  }
+
   render() {
     return (
       <section>
-        <article>
-          <div>
-            <label for="comment" class="block text-2xl font-medium text-gray-700 border-b-2 mb-7">
-              {this.note.name}
-            </label>
-            <div class="mt-1">
-              <Textarea />
-            </div>
-          </div>
-        </article>
+        <article>{this.note.name ? <Note /> : <Splash />}</article>
       </section>
     )
   }
 }
-
-export default Home

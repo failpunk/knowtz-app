@@ -1,34 +1,36 @@
 import Nullstack from 'nullstack'
 import SparkleSvg from './svg/SparkleSvg'
 import { debounce } from 'lodash-es'
-import { saveNote, deleteNote, fetchNotes, fetchNote } from './services/database'
+import { saveNote, deleteNote, fetchNotes, fetchNote, updateName } from './services/database'
 
-export default class Home extends Nullstack {
+export default class Notes extends Nullstack {
   note = { text: '', name: '' }
   save
 
   async hydrate({ currentNote }) {
-    // console.log('------> NOTES HYDRATE', currentNote)
     if (currentNote) {
       this.note = currentNote
     }
     this.save = debounce(saveNote, 1000) // todo: move to client???
   }
 
-  handleNoteUpdated(context) {
-    context.currentNote = this.note
-    const { hash, text } = this.note
-    this.save({ hash, text })
-  }
-
   async update({ currentNote }) {
+    // console.log('------> Notes UPDATE', currentNote)
     if (currentNote) {
       this.note = currentNote
     }
   }
 
+  updateName(context) {
+    const text = context.event.target.innerText
+    if (text !== this.note.name) {
+      updateName(this.note.hash, text)
+      this.note.name = text
+      context.notes = fetchNotes()
+    }
+  }
+
   deleteNote(context) {
-    console.log('------> deleteNote', this.note)
     deleteNote(this.note.hash)
     context.notes = fetchNotes()
     const firstNote = context.notes[0] || {}
@@ -61,6 +63,14 @@ export default class Home extends Nullstack {
     )
   }
 
+  renderNoteTitle() {
+    return (
+      <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate" contenteditable onblur={this.updateName}>
+        {this.note.name}
+      </h2>
+    )
+  }
+
   renderDeleteButton() {
     return (
       <button
@@ -85,7 +95,7 @@ export default class Home extends Nullstack {
       <div>
         <div class="md:flex md:items-center md:justify-between mb-5 border-b-2 pb-2">
           <div class="flex-1 min-w-0">
-            <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">{this.note.name}</h2>
+            <NoteTitle />
           </div>
           <div class="mt-4 flex md:mt-0 md:ml-4">
             <DeleteButton />

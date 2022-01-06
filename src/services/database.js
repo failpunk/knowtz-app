@@ -8,14 +8,24 @@ export function fetchNotes() {
   return JSON.parse(rawList) || []
 }
 
+export function fetchNote(hash) {
+  const lookup = `${NOTES_KEY}-${hash}`
+  return window.localStorage.getItem(lookup) || ''
+}
+
 export function saveNotes(list) {
   const lookup = `${NOTES_KEY}-list`
   return window.localStorage.setItem(lookup, JSON.stringify(list))
 }
 
-export function fetchNote(noteKey) {
-  const lookup = `${NOTES_KEY}-${noteKey}`
-  return window.localStorage.getItem(lookup) || ''
+export function updateName(hash, text) {
+  console.log('------> hash, text', hash, text)
+  const noteToUpdate = fetchNotes().find((note) => note.hash === hash)
+  noteToUpdate.name = text
+  console.log('------> noteToUpdate', noteToUpdate)
+  const remaining = fetchNotes().filter((note) => note.hash !== hash)
+  remaining.push(noteToUpdate)
+  saveNotes(remaining)
 }
 
 export function saveNote({ hash, text }) {
@@ -30,8 +40,6 @@ export function deleteNote(hash) {
   window.localStorage.removeItem(lookup)
   saveNotes(remaining)
 }
-
-export function findNote() {}
 
 // Crate note and add to list
 export function createNewNote() {

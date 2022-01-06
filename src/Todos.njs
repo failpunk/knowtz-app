@@ -2,7 +2,7 @@ import Nullstack from 'nullstack'
 
 const UNCHECKED_BRACKET = '[]'
 const CHECKED_BRACKET = '[X]'
-class Home extends Nullstack {
+export default class Todos extends Nullstack {
   todos = []
 
   async hydrate() {
@@ -107,5 +107,3 @@ class Home extends Nullstack {
     return <TodosList />
   }
 }
-
-export default Home

@@ -7202,6 +7202,11 @@ select {
   line-height: 2.5rem;
 }
 
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
 .font-medium {
   font-weight: 500;
 }
@@ -7259,6 +7264,31 @@ select {
 .text-indigo-200 {
   --tw-text-opacity: 1;
   color: rgba(199, 210, 254, var(--tw-text-opacity));
+}
+
+.text-pink-600 {
+  --tw-text-opacity: 1;
+  color: rgba(219, 39, 119, var(--tw-text-opacity));
+}
+
+.text-pink-700 {
+  --tw-text-opacity: 1;
+  color: rgba(190, 24, 93, var(--tw-text-opacity));
+}
+
+.text-pink-500 {
+  --tw-text-opacity: 1;
+  color: rgba(236, 72, 153, var(--tw-text-opacity));
+}
+
+.text-pink-300 {
+  --tw-text-opacity: 1;
+  color: rgba(249, 168, 212, var(--tw-text-opacity));
+}
+
+.text-blue-500 {
+  --tw-text-opacity: 1;
+  color: rgba(59, 130, 246, var(--tw-text-opacity));
 }
 
 .line-through {
@@ -7339,6 +7369,11 @@ select {
   transition-property: background-color, border-color, color, fill, stroke;
 }
 
+.nightwind .text-blue-500 {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
 .nightwind .text-indigo-200 {
   transition-duration: 300ms;
   transition-property: background-color, border-color, color, fill, stroke;
@@ -7350,6 +7385,26 @@ select {
 }
 
 .nightwind .bg-indigo-600 {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
+.nightwind .text-pink-300 {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
+.nightwind .text-pink-500 {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
+.nightwind .text-pink-600 {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
+.nightwind .text-pink-700 {
   transition-duration: 300ms;
   transition-property: background-color, border-color, color, fill, stroke;
 }

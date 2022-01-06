@@ -116,9 +116,7 @@ export default class Layout extends Nullstack {
           <div class="flex flex-col w-64">
             <div class="flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-gray-100">
               <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-                <div class="flex items-center flex-shrink-0 px-4">
-                  <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-900-text.svg" alt="Workflow" />
-                </div>
+                <div class="flex items-center flex-shrink-0 px-4 text-3xl text-blue-500">Knowtz App</div>
                 <NotesList />
               </div>
               <div class="flex-shrink-0 flex border-t border-gray-200 p-4">

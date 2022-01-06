@@ -19,10 +19,8 @@ export function saveNotes(list) {
 }
 
 export function updateName(hash, text) {
-  console.log('------> hash, text', hash, text)
   const noteToUpdate = fetchNotes().find((note) => note.hash === hash)
   noteToUpdate.name = text
-  console.log('------> noteToUpdate', noteToUpdate)
   const remaining = fetchNotes().filter((note) => note.hash !== hash)
   remaining.push(noteToUpdate)
   saveNotes(remaining)

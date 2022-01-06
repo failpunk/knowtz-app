@@ -21,6 +21,12 @@ export default class Notes extends Nullstack {
     }
   }
 
+  handleNoteUpdated(context) {
+    context.currentNote = this.note
+    const { hash, text } = this.note
+    this.save({ hash, text })
+  }
+
   updateName(context) {
     const text = context.event.target.innerText
     if (text !== this.note.name) {

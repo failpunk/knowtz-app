@@ -20,7 +20,7 @@ export default class Layout extends Nullstack {
   }
 
   update({ notes, currentNote }) {
-    console.log('------> LAYOUT UPDATE', notes, currentNote)
+    // console.log('------> LAYOUT UPDATE', notes, currentNote)
     this.notes = notes
     this.currentNote = currentNote || {}
   }
@@ -29,7 +29,7 @@ export default class Layout extends Nullstack {
     this.notes = notes
   }
 
-  renderNotesList({ currentNote }) {
+  renderNotesList() {
     return (
       <nav class="mt-5 flex-1" aria-label="Sidebar">
         <div class="px-2 space-y-1">

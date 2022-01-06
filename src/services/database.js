@@ -18,8 +18,8 @@ export function fetchNote(noteKey) {
   return window.localStorage.getItem(lookup) || ''
 }
 
-export function saveNote({hash, text}) {
-  console.log('------> DATABASE saveNote', hash, text)
+export function saveNote({ hash, text }) {
+  // console.log('------> DATABASE saveNote', hash, text)
   const lookup = `${NOTES_KEY}-${hash}`
   return window.localStorage.setItem(lookup, text)
 }
@@ -41,5 +41,5 @@ export function createNewNote() {
   saveNotes(existingNotes)
 
   // Save actual note
-  saveNote(hash, '')
+  saveNote({ hash, text: '' })
 }

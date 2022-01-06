@@ -7,7 +7,7 @@ class Home extends Nullstack {
   save
 
   async hydrate({ currentNote }) {
-    console.log('------> NOTES HYDRATE', currentNote)
+    // console.log('------> NOTES HYDRATE', currentNote)
     if (currentNote) {
       this.note = currentNote
     }
@@ -16,13 +16,11 @@ class Home extends Nullstack {
 
   handleNoteUpdated(context) {
     context.currentNote = this.note
-    console.log('------> handleNoteUpdated', this.note, this.note.hash)
     const { hash, text } = this.note
     this.save({ hash, text })
   }
 
   async update({ currentNote }) {
-    console.log('------> NOTES UPDATE', currentNote)
     if (currentNote) {
       this.note = currentNote
     }

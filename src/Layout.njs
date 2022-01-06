@@ -9,9 +9,8 @@ export default class Layout extends Nullstack {
   currentNote = {}
 
   createNote(context) {
-    createNewNote()
-    const notes = fetchNotes()
-    context.notes = notes
+    context.currentNote = createNewNote()
+    context.notes = fetchNotes()
   }
 
   selectNote(context) {
@@ -20,7 +19,7 @@ export default class Layout extends Nullstack {
   }
 
   update({ notes, currentNote }) {
-    // console.log('------> LAYOUT UPDATE', notes, currentNote)
+    // console.log('------> LAYOUT UPDATE', currentNote)
     this.notes = notes
     this.currentNote = currentNote || {}
   }

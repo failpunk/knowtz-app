@@ -42,4 +42,6 @@ export function createNewNote() {
 
   // Save actual note
   saveNote({ hash, text: '' })
+
+  return { ...noteObject, text: '' }
 }

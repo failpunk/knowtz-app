@@ -18,7 +18,7 @@ export default class Todos extends Nullstack {
   }
 
   toggleTodo(context) {
-    const { todo, currentNote, saveNotes } = context
+    const { todo, currentNote } = context
 
     todo.isComplete = !todo.isComplete
 

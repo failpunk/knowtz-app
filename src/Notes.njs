@@ -51,7 +51,7 @@ export default class Notes extends Nullstack {
         rows="4"
         name="comment"
         id="comment"
-        class="h-screen border-none block w-full sm:text-sm p-0 border-transparent focus:border-transparent focus:ring-0"
+        class="h-screen border-none block w-full sm:text-sm p-0 border-transparent focus:border-transparent focus:ring-0 scrollbar-thin scrollbar-thumb-rounded-md scrollbar-thumb-gray-900 scrollbar-track-gray-700"
       ></textarea>
     )
   }
@@ -107,7 +107,7 @@ export default class Notes extends Nullstack {
             <DeleteButton />
           </div>
         </div>
-        <div class="mt-1">
+        <div class="mt-1 ">
           <Textarea />
         </div>
       </div>

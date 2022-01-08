@@ -153,7 +153,7 @@ export default class Layout extends Nullstack {
             </div>
           </div>
           <div class="flex-1 relative z-0 flex overflow-hidden">
-            <main class="flex-1 relative z-0 overflow-y-auto focus:outline-none xl:order-last">
+            <main class="flex-1 relative z-0 overflow-y-auto focus:outline-none xl:order-last scrollbar">
               <div class="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
                 <div class="h-full rounded-lg">{rightColumn}</div>
               </div>

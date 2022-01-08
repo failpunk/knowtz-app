@@ -1,7 +1,7 @@
 import Nullstack from 'nullstack'
 import SparkleSvg from './svg/SparkleSvg'
 import { debounce } from 'lodash-es'
-import { saveNote, deleteNote, fetchNotes, fetchNote, updateName } from './services/database'
+import { saveNote, deleteNote, fetchNotesList, fetchNote, updateName } from './services/database'
 
 export default class Notes extends Nullstack {
   note = { text: '', name: '' }
@@ -32,13 +32,13 @@ export default class Notes extends Nullstack {
     if (text !== this.note.name) {
       updateName(this.note.hash, text)
       this.note.name = text
-      context.notes = fetchNotes()
+      context.notes = fetchNotesList()
     }
   }
 
   deleteNote(context) {
     deleteNote(this.note.hash)
-    context.notes = fetchNotes()
+    context.notes = fetchNotesList()
     const firstNote = context.notes[0] || {}
     context.currentNote = { ...firstNote, text: fetchNote(firstNote.hash) }
   }

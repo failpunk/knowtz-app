@@ -2,7 +2,20 @@ import shortHash from 'short-hash'
 
 const NOTES_KEY = 'knowtz'
 
-export function fetchNotes() {
+export function fetachAllNotes() {
+  const list = fetchNotesList()
+  let notes = []
+  for (const noteInfo of list) {
+    notes.push({
+      hash: noteInfo.hash,
+      text: fetchNote(noteInfo.hash)
+    })
+  }
+
+  return notes
+}
+
+export function fetchNotesList() {
   const lookup = `${NOTES_KEY}-list`
   const rawList = window.localStorage.getItem(lookup)
   return JSON.parse(rawList) || []
@@ -19,9 +32,9 @@ export function saveNotes(list) {
 }
 
 export function updateName(hash, text) {
-  const noteToUpdate = fetchNotes().find((note) => note.hash === hash)
+  const noteToUpdate = fetchNotesList().find((note) => note.hash === hash)
   noteToUpdate.name = text
-  const remaining = fetchNotes().filter((note) => note.hash !== hash)
+  const remaining = fetchNotesList().filter((note) => note.hash !== hash)
   remaining.push(noteToUpdate)
   saveNotes(remaining)
 }
@@ -34,14 +47,14 @@ export function saveNote({ hash, text }) {
 // Delete note and from list
 export function deleteNote(hash) {
   const lookup = `${NOTES_KEY}-${hash}`
-  const remaining = fetchNotes().filter((note) => note.hash !== hash)
+  const remaining = fetchNotesList().filter((note) => note.hash !== hash)
   window.localStorage.removeItem(lookup)
   saveNotes(remaining)
 }
 
 // Crate note and add to list
 export function createNewNote() {
-  const existingNotes = fetchNotes()
+  const existingNotes = fetchNotesList()
   const name = `My New Note ${parseInt(existingNotes.length) + 1}`
   const hash = shortHash(name.toLowerCase())
 

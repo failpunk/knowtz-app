@@ -1,7 +1,7 @@
 import Nullstack from 'nullstack'
 import BookSvg from './svg/BookSvg'
 import PlusSvg from './svg/PlusSvg'
-import { createNewNote, fetchNote, fetchNotes } from './services/database'
+import { createNewNote, fetchNote, fetchNotesList } from './services/database'
 
 export default class Layout extends Nullstack {
   user = 'Justin Vencel'
@@ -11,7 +11,7 @@ export default class Layout extends Nullstack {
 
   createNote(context) {
     context.currentNote = createNewNote()
-    context.notes = fetchNotes()
+    context.notes = fetchNotesList()
   }
 
   selectNote(context) {

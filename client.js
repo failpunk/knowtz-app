@@ -1,11 +1,11 @@
 import Nullstack from 'nullstack'
 import Application from './src/Application'
-import { fetchNotes, fetchNote } from './src/services/database'
+import { fetchNotesList, fetchNote } from './src/services/database'
 
 const context = Nullstack.start(Application)
 
 // Read notes from localStorage
-context.notes = fetchNotes()
+context.notes = fetchNotesList()
 
 const firstNote = context.notes[0] || {}
 

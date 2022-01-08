@@ -1,20 +1,21 @@
 import Nullstack from 'nullstack'
-import { saveNote } from './services/database'
+import { saveNote, fetachAllNotes } from './services/database'
 
 const UNCHECKED_BRACKET = '[]'
 const CHECKED_BRACKET = '[X]'
 export default class Todos extends Nullstack {
   todos = []
   notes = []
+  searchText = ''
 
   async hydrate({ notes }) {
     this.notes = notes
-    this.searchNotesForTodos()
+    this.searchForTodos()
   }
 
   async update({ notes }) {
     this.notes = notes
-    this.searchNotesForTodos()
+    this.searchForTodos()
   }
 
   toggleTodo(context) {
@@ -37,18 +38,21 @@ export default class Todos extends Nullstack {
     saveNote({ hash: currentNote.hash, text: currentNote.text })
   }
 
-  searchNotesForTodos({ currentNote = {} }) {
-    if (!currentNote || !currentNote.text) return
+  searchForTodos() {
+    const todos = fetachAllNotes().map((note) => this.searchNoteForTodos({ text: note.text }))
+    this.todos = todos.flat()
+  }
 
+  searchNoteForTodos({ text }) {
     // searching for []
-    const matchesComplete = [...currentNote.text.matchAll(/\[X\]/g)]
-    const matchesIncomplete = [...currentNote.text.matchAll(/\[\]/g)]
+    const matchesComplete = [...text.matchAll(/\[X\]/g)]
+    const matchesIncomplete = [...text.matchAll(/\[\]/g)]
 
     // parse each match for just the todo text.
     const parsedComplete = matchesComplete.map((match) => this.parseTodo({ match, isComplete: true }))
     const parsedIncomplete = matchesIncomplete.map((match) => this.parseTodo({ match, isComplete: false }))
 
-    this.todos = [...parsedIncomplete, ...parsedComplete]
+    return [...parsedIncomplete, ...parsedComplete]
   }
 
   parseTodo({ match, isComplete }) {

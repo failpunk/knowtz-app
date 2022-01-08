@@ -1,5 +1,5 @@
 import Nullstack from 'nullstack'
-import { saveNote, fetachAllNotes } from './services/database'
+import { saveNote, fetchAllNotes } from './services/database'
 
 const UNCHECKED_BRACKET = '[]'
 const CHECKED_BRACKET = '[X]'
@@ -39,7 +39,7 @@ export default class Todos extends Nullstack {
   }
 
   searchForTodos() {
-    const todos = fetachAllNotes().map((note) => this.searchNoteForTodos({ text: note.text }))
+    const todos = fetchAllNotes().map((note) => this.searchNoteForTodos({ text: note.text }))
     this.todos = todos.flat()
   }
 

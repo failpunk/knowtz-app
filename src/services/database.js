@@ -2,7 +2,7 @@ import shortHash from 'short-hash'
 
 const NOTES_KEY = 'knowtz'
 
-export function fetachAllNotes() {
+export function fetchAllNotes() {
   const list = fetchNotesList()
   let notes = []
   for (const noteInfo of list) {

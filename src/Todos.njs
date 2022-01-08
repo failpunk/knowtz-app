@@ -1,12 +1,11 @@
 import Nullstack from 'nullstack'
-import { saveNote, fetchAllNotes } from './services/database'
+import { saveNote, fetchAllNotes, fetchNote } from './services/database'
 
 const UNCHECKED_BRACKET = '[]'
 const CHECKED_BRACKET = '[X]'
 export default class Todos extends Nullstack {
   todos = []
   notes = []
-  searchText = ''
 
   async hydrate({ notes }) {
     this.notes = notes
@@ -16,6 +15,11 @@ export default class Todos extends Nullstack {
   async update({ notes }) {
     this.notes = notes
     this.searchForTodos()
+  }
+
+  // Sort by not completed first
+  getSortedTodos() {
+    return this.todos.sort((x) => (x.isComplete ? 1 : -1))
   }
 
   toggleTodo(context) {
@@ -31,15 +35,22 @@ export default class Todos extends Nullstack {
     // update todo list text
     todo.originalText = todo.originalText.replace(toBeReplaced, replacement)
 
-    // update noriginal note text
-    context.currentNote.text = currentNote.text.replace(oldText, todo.originalText)
+    // update original note text
+    let noteToUpdate = fetchNote(todo.hash)
+    noteToUpdate = noteToUpdate.replace(oldText, todo.originalText)
 
     // Save updated note text
-    saveNote({ hash: currentNote.hash, text: currentNote.text })
+    saveNote({ hash: todo.hash, text: noteToUpdate })
+
+    if (todo.hash === currentNote.hash) {
+      context.currentNote = { ...currentNote, text: noteToUpdate }
+    }
   }
 
   searchForTodos() {
-    const todos = fetchAllNotes().map((note) => this.searchNoteForTodos({ text: note.text }))
+    const todos = fetchAllNotes().map((note) => {
+      return this.searchNoteForTodos({ text: note.text }).map((todo) => ({ ...note, ...todo }))
+    })
     this.todos = todos.flat()
   }
 
@@ -103,7 +114,7 @@ export default class Todos extends Nullstack {
       <fieldset>
         <legend class="text-lg font-medium text-gray-900">Todos:</legend>
         <div class="mt-4 border-t border-b border-gray-300 divide-y divide-gray-300">
-          {this.todos.map((todo) => (
+          {this.getSortedTodos().map((todo) => (
             <Todo todo={todo} />
           ))}
         </div>

@@ -6,6 +6,8 @@ const CHECKED_BRACKET = '[X]'
 export default class Todos extends Nullstack {
   todos = []
   notes = []
+  menuOpen = false
+  hideCompleted = false
 
   async hydrate({ notes }) {
     this.notes = notes
@@ -17,9 +19,27 @@ export default class Todos extends Nullstack {
     this.searchForTodos()
   }
 
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen
+  }
+
+  toggleShowHideCompleted() {
+    this.hideCompleted = !this.hideCompleted
+    this.menuOpen = false
+  }
+
   // Sort by not completed first
   getSortedTodos() {
     return this.todos.sort((x) => (x.isComplete ? 1 : -1))
+  }
+
+  getTodosWithoutCompleted({ todos }) {
+    return todos.filter((todo) => todo.isComplete === false)
+  }
+
+  getTodos() {
+    const todos = this.getSortedTodos()
+    return this.hideCompleted ? this.getTodosWithoutCompleted({ todos }) : todos
   }
 
   toggleTodo(context) {
@@ -111,18 +131,74 @@ export default class Todos extends Nullstack {
 
   renderTodosList() {
     return (
-      <fieldset>
-        <legend class="text-lg font-medium text-gray-900">Todos:</legend>
-        <div class="mt-4 border-t border-b border-gray-300 divide-y divide-gray-300">
-          {this.getSortedTodos().map((todo) => (
-            <Todo todo={todo} />
-          ))}
+      <div class="mt-4 border-b border-gray-300 divide-y divide-gray-300">
+        {this.getTodos().map((todo) => (
+          <Todo todo={todo} />
+        ))}
+      </div>
+    )
+  }
+
+  renderMenuDots() {
+    return (
+      <div>
+        <button type="button" class="-m-2 p-2 rounded-full flex items-center text-gray-400 hover:text-gray-600" id="menu-0-button" aria-expanded="false" aria-haspopup="true" onclick={this.toggleMenu}>
+          <span class="sr-only">Open options</span>
+          <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+          </svg>
+        </button>
+      </div>
+    )
+  }
+
+  renderTodoMenu() {
+    return (
+      <div
+        class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+        role="menu"
+        aria-orientation="vertical"
+        aria-labelledby="menu-0-button"
+        tabindex="-1"
+      >
+        <div class="py-1" role="none">
+          <a href="#" class="text-gray-700 flex px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-0-item-2" onclick={this.toggleShowHideCompleted}>
+            <svg class="mr-3 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" clip-rule="evenodd" />
+            </svg>
+            <span>Hide Completed Todos</span>
+          </a>
         </div>
-      </fieldset>
+      </div>
+    )
+  }
+
+  renderTodoHeader() {
+    return (
+      <div class="px-4 py-5 sm:px-6">
+        <div class="flex justify-between">
+          <div class="flex-shrink-0">
+            <h2 class="text-xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">Todos</h2>
+          </div>
+
+          <div class="flex-shrink-0 self-center flex">
+            <div class="relative z-30 inline-block text-left">
+              <MenuDots />
+
+              {this.menuOpen && <TodoMenu />}
+            </div>
+          </div>
+        </div>
+      </div>
     )
   }
 
   render() {
-    return <TodosList />
+    return (
+      <div>
+        <TodoHeader />
+        <TodosList />
+      </div>
+    )
   }
 }

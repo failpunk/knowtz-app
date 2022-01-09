@@ -120,7 +120,8 @@ export default class Layout extends Nullstack {
                 <div class="flex items-center flex-shrink-0 px-4 text-3xl text-blue-500">Knowtz App</div>
                 <NotesList />
               </div>
-              <div class="flex-shrink-0 flex border-t border-gray-200 p-4">
+              {/* PROFILE SECTION */}
+              {/* <div class="flex-shrink-0 flex border-t border-gray-200 p-4">
                 <a href="#" class="flex-shrink-0 w-full group block">
                   <div class="flex items-center">
                     <div>
@@ -132,7 +133,7 @@ export default class Layout extends Nullstack {
                     </div>
                   </div>
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

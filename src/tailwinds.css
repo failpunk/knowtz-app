@@ -7105,11 +7105,6 @@ select {
   padding-bottom: 1rem;
 }
 
-.px-3 {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-}
-
 .pt-2 {
   padding-top: 0.5rem;
 }
@@ -7364,36 +7359,12 @@ select {
   height: 8px;
 }
 
-.scrollbar-thumb-rounded::-webkit-scrollbar-thumb {
-  border-radius: 0.25rem;
-}
-
 .scrollbar-thumb-rounded-md::-webkit-scrollbar-thumb {
   border-radius: 0.375rem;
 }
 
-.scrollbar-track-gray-\31 00 {
-  --scrollbar-track: #f3f4f6 !important;
-}
-
-.scrollbar-thumb-gray-\32 00 {
-  --scrollbar-thumb: #e5e7eb !important;
-}
-
-.scrollbar-track-gray-\35 00 {
-  --scrollbar-track: #6b7280 !important;
-}
-
 .scrollbar-track-gray-\37 00 {
   --scrollbar-track: #374151 !important;
-}
-
-.scrollbar-track-gray-\38 00 {
-  --scrollbar-track: #1f2937 !important;
-}
-
-.scrollbar-thumb-gray-\38 00 {
-  --scrollbar-thumb: #1f2937 !important;
 }
 
 .scrollbar-thumb-gray-\39 00 {

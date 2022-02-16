@@ -1,4 +1,4 @@
-import shortHash from 'short-hash'
+import { nanoid } from 'nanoid'
 
 const NOTES_KEY = 'knowtz'
 
@@ -8,7 +8,7 @@ export function fetchAllNotes() {
   for (const noteInfo of list) {
     notes.push({
       hash: noteInfo.hash,
-      text: fetchNote(noteInfo.hash)
+      text: fetchNote(noteInfo.hash),
     })
   }
 
@@ -56,7 +56,7 @@ export function deleteNote(hash) {
 export function createNewNote() {
   const existingNotes = fetchNotesList()
   const name = `My New Note ${parseInt(existingNotes.length) + 1}`
-  const hash = shortHash(name.toLowerCase())
+  const hash = nanoid(12)
 
   const noteObject = {
     hash,

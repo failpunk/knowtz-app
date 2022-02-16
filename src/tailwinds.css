@@ -6759,6 +6759,10 @@ select {
   margin-top: 1.25rem;
 }
 
+.ml-3 {
+  margin-left: 0.75rem;
+}
+
 .-mr-12 {
   margin-right: -3rem;
 }
@@ -6769,10 +6773,6 @@ select {
 
 .mr-4 {
   margin-right: 1rem;
-}
-
-.ml-3 {
-  margin-left: 0.75rem;
 }
 
 .-mr-3 {
@@ -6835,6 +6835,10 @@ select {
   height: 100vh;
 }
 
+.h-9 {
+  height: 2.25rem;
+}
+
 .h-full {
   height: 100%;
 }
@@ -6853,10 +6857,6 @@ select {
 
 .h-8 {
   height: 2rem;
-}
-
-.h-9 {
-  height: 2.25rem;
 }
 
 .h-12 {
@@ -6883,6 +6883,10 @@ select {
   width: 100%;
 }
 
+.w-9 {
+  width: 2.25rem;
+}
+
 .w-10 {
   width: 2.5rem;
 }
@@ -6903,10 +6907,6 @@ select {
   width: 16rem;
 }
 
-.w-9 {
-  width: 2.25rem;
-}
-
 .w-12 {
   width: 3rem;
 }
@@ -6919,16 +6919,16 @@ select {
   width: 1rem;
 }
 
-.w-32 {
-  width: 8rem;
-}
-
 .w-5 {
   width: 1.25rem;
 }
 
 .w-56 {
   width: 14rem;
+}
+
+.w-32 {
+  width: 8rem;
 }
 
 .min-w-0 {
@@ -6970,10 +6970,6 @@ select {
   align-items: center;
 }
 
-.justify-end {
-  justify-content: flex-end;
-}
-
 .justify-center {
   justify-content: center;
 }
@@ -6986,12 +6982,6 @@ select {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
-}
-
-.space-x-3 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(0.75rem * var(--tw-space-x-reverse));
-  margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .divide-y > :not([hidden]) ~ :not([hidden]) {
@@ -7009,16 +6999,8 @@ select {
   align-self: center;
 }
 
-.overflow-auto {
-  overflow: auto;
-}
-
 .overflow-hidden {
   overflow: hidden;
-}
-
-.overflow-scroll {
-  overflow: scroll;
 }
 
 .overflow-y-auto {
@@ -7199,6 +7181,11 @@ select {
   line-height: 1.25rem;
 }
 
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
@@ -7209,19 +7196,9 @@ select {
   line-height: 2.25rem;
 }
 
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
-}
-
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
-}
-
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
 }
 
 .text-xl {
@@ -7251,9 +7228,9 @@ select {
   color: rgba(17, 24, 39, var(--tw-text-opacity));
 }
 
-.text-white {
+.text-gray-700 {
   --tw-text-opacity: 1;
-  color: rgba(255, 255, 255, var(--tw-text-opacity));
+  color: rgba(55, 65, 81, var(--tw-text-opacity));
 }
 
 .text-gray-500 {
@@ -7261,9 +7238,9 @@ select {
   color: rgba(107, 114, 128, var(--tw-text-opacity));
 }
 
-.text-gray-700 {
+.text-white {
   --tw-text-opacity: 1;
-  color: rgba(55, 65, 81, var(--tw-text-opacity));
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
 }
 
 .text-blue-500 {
@@ -7546,6 +7523,54 @@ textarea {
   transition-property: background-color, border-color, color, fill, stroke;
 }
 
+.group:hover .group-hover\:dark .group-hover\:text-gray-200 {
+  color: rgba(55, 65, 81, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:dark .group-hover\:text-gray-200.group-hover\:nightwind-prevent {
+  color: rgba(229, 231, 235, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:dark .group-hover\:nightwind-prevent-block .group-hover\:text-gray-200 {
+  color: rgba(229, 231, 235, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:dark .group-hover\:text-gray-300 {
+  color: rgba(75, 85, 99, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:dark .group-hover\:text-gray-300.group-hover\:nightwind-prevent {
+  color: rgba(209, 213, 219, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:dark .group-hover\:nightwind-prevent-block .group-hover\:text-gray-300 {
+  color: rgba(209, 213, 219, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:dark .group-hover\:text-gray-400 {
+  color: rgba(107, 114, 128, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:dark .group-hover\:text-gray-400.group-hover\:nightwind-prevent {
+  color: rgba(156, 163, 175, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:dark .group-hover\:nightwind-prevent-block .group-hover\:text-gray-400 {
+  color: rgba(156, 163, 175, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:dark .group-hover\:text-gray-500 {
+  color: rgba(156, 163, 175, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:dark .group-hover\:text-gray-500.group-hover\:nightwind-prevent {
+  color: rgba(107, 114, 128, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:dark .group-hover\:nightwind-prevent-block .group-hover\:text-gray-500 {
+  color: rgba(107, 114, 128, var(--tw-text-opacity));
+}
+
 .group:hover .group-hover\:dark .group-hover\:text-gray-700 {
   color: rgba(229, 231, 235, var(--tw-text-opacity));
 }
@@ -7570,14 +7595,54 @@ textarea {
   color: rgba(17, 24, 39, var(--tw-text-opacity));
 }
 
-.group:hover .group-hover\:text-gray-900 {
+.group:hover .group-hover\:text-gray-500 {
   --tw-text-opacity: 1;
-  color: rgba(17, 24, 39, var(--tw-text-opacity));
+  color: rgba(107, 114, 128, var(--tw-text-opacity));
 }
 
 .group:hover .group-hover\:text-gray-700 {
   --tw-text-opacity: 1;
   color: rgba(55, 65, 81, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:text-gray-900 {
+  --tw-text-opacity: 1;
+  color: rgba(17, 24, 39, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:text-gray-200 {
+  --tw-text-opacity: 1;
+  color: rgba(229, 231, 235, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:text-gray-300 {
+  --tw-text-opacity: 1;
+  color: rgba(209, 213, 219, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:text-gray-400 {
+  --tw-text-opacity: 1;
+  color: rgba(156, 163, 175, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:nightwind .group-hover\:text-gray-200 {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
+.group:hover .group-hover\:nightwind .group-hover\:text-gray-300 {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
+.group:hover .group-hover\:nightwind .group-hover\:text-gray-400 {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
+.group:hover .group-hover\:nightwind .group-hover\:text-gray-500 {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
 }
 
 .group:hover .group-hover\:nightwind .group-hover\:text-gray-700 {
@@ -7656,13 +7721,6 @@ textarea {
 .hover\:text-gray-600:hover {
   --tw-text-opacity: 1;
   color: rgba(75, 85, 99, var(--tw-text-opacity));
-}
-
-.hover\:underline:hover {
-  text-decoration: underline;
-}
-
-.hover\:text-gray-600:hover {
   transition-duration: 300ms;
   transition-property: background-color, border-color, color, fill, stroke;
 }

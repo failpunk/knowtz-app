@@ -1,11 +1,11 @@
 import Nullstack from 'nullstack'
 import BookSvg from './svg/BookSvg'
 import PlusSvg from './svg/PlusSvg'
-import { createNewNote, fetchNote, fetchNotesList } from './services/database'
+import { createNewNote, fetchNote, fetchNotesList, updateUserName, fetchUser } from './services/database'
 
+const NAME_PLACEHOLDER = 'Your Name'
 export default class Layout extends Nullstack {
-  user = 'Justin Vencel'
-  avatarUrl = 'https://avatars.githubusercontent.com/u/1109167?v=4'
+  username
   notes = []
   currentNote = {}
 
@@ -27,6 +27,17 @@ export default class Layout extends Nullstack {
 
   hydrate({ notes }) {
     this.notes = notes
+    this.setUserName()
+  }
+
+  setUserName() {
+    this.username = fetchUser().username || NAME_PLACEHOLDER
+  }
+
+  handleUserNameUpdate(context) {
+    const username = context.event.target.innerText
+    updateUserName(username)
+    this.setUserName()
   }
 
   renderNotesList() {
@@ -54,6 +65,23 @@ export default class Layout extends Nullstack {
         <BookSvg />
         {note.name}
       </a>
+    )
+  }
+
+  renderAvatar() {
+    return (
+      <div class="flex-shrink-0 flex border-t border-gray-200 p-4">
+        <a href="#" class="flex-shrink-0 w-full group block">
+          <div class="flex items-center">
+            <div>{this.username !== NAME_PLACEHOLDER && <img class="inline-block h-9 w-9 rounded-full" src={`https://robohash.org/${this.username}?set=set4&bgset=&size=36x36`} alt="" />}</div>
+            <div class="ml-3 group">
+              <p class="text-sm font-medium text-gray-700" contenteditable onblur={this.handleUserNameUpdate}>
+                {this.username}
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
     )
   }
 
@@ -120,20 +148,7 @@ export default class Layout extends Nullstack {
                 <div class="flex items-center flex-shrink-0 px-4 text-3xl text-blue-500">Knowtz App</div>
                 <NotesList />
               </div>
-              {/* PROFILE SECTION */}
-              {/* <div class="flex-shrink-0 flex border-t border-gray-200 p-4">
-                <a href="#" class="flex-shrink-0 w-full group block">
-                  <div class="flex items-center">
-                    <div>
-                      <img class="inline-block h-9 w-9 rounded-full" src={this.avatarUrl} alt="" />
-                    </div>
-                    <div class="ml-3">
-                      <p class="text-sm font-medium text-gray-700 group-hover:text-gray-900">{this.user}</p>
-                      <p class="text-xs font-medium text-gray-500 group-hover:text-gray-700">View profile</p>
-                    </div>
-                  </div>
-                </a>
-              </div> */}
+              <Avatar />
             </div>
           </div>
         </div>

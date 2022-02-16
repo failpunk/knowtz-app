@@ -72,3 +72,20 @@ export function createNewNote() {
 
   return { ...noteObject, text: '' }
 }
+
+export function fetchUser() {
+  const lookup = `${NOTES_KEY}-user`
+  const rawUser = window.localStorage.getItem(lookup)
+  return JSON.parse(rawUser) || {}
+}
+
+export function saveUser(user) {
+  const lookup = `${NOTES_KEY}-user`
+  return window.localStorage.setItem(lookup, JSON.stringify(user))
+}
+
+export function updateUserName(username) {
+  const user = fetchUser()
+  user.username = username
+  saveUser(user)
+}

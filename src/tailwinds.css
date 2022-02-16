@@ -7181,11 +7181,6 @@ select {
   line-height: 1.25rem;
 }
 
-.text-xs {
-  font-size: 0.75rem;
-  line-height: 1rem;
-}
-
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
@@ -7233,14 +7228,14 @@ select {
   color: rgba(55, 65, 81, var(--tw-text-opacity));
 }
 
-.text-gray-500 {
-  --tw-text-opacity: 1;
-  color: rgba(107, 114, 128, var(--tw-text-opacity));
-}
-
 .text-white {
   --tw-text-opacity: 1;
   color: rgba(255, 255, 255, var(--tw-text-opacity));
+}
+
+.text-gray-500 {
+  --tw-text-opacity: 1;
+  color: rgba(107, 114, 128, var(--tw-text-opacity));
 }
 
 .text-blue-500 {
@@ -7523,54 +7518,6 @@ textarea {
   transition-property: background-color, border-color, color, fill, stroke;
 }
 
-.group:hover .group-hover\:dark .group-hover\:text-gray-200 {
-  color: rgba(55, 65, 81, var(--tw-text-opacity));
-}
-
-.group:hover .group-hover\:dark .group-hover\:text-gray-200.group-hover\:nightwind-prevent {
-  color: rgba(229, 231, 235, var(--tw-text-opacity));
-}
-
-.group:hover .group-hover\:dark .group-hover\:nightwind-prevent-block .group-hover\:text-gray-200 {
-  color: rgba(229, 231, 235, var(--tw-text-opacity));
-}
-
-.group:hover .group-hover\:dark .group-hover\:text-gray-300 {
-  color: rgba(75, 85, 99, var(--tw-text-opacity));
-}
-
-.group:hover .group-hover\:dark .group-hover\:text-gray-300.group-hover\:nightwind-prevent {
-  color: rgba(209, 213, 219, var(--tw-text-opacity));
-}
-
-.group:hover .group-hover\:dark .group-hover\:nightwind-prevent-block .group-hover\:text-gray-300 {
-  color: rgba(209, 213, 219, var(--tw-text-opacity));
-}
-
-.group:hover .group-hover\:dark .group-hover\:text-gray-400 {
-  color: rgba(107, 114, 128, var(--tw-text-opacity));
-}
-
-.group:hover .group-hover\:dark .group-hover\:text-gray-400.group-hover\:nightwind-prevent {
-  color: rgba(156, 163, 175, var(--tw-text-opacity));
-}
-
-.group:hover .group-hover\:dark .group-hover\:nightwind-prevent-block .group-hover\:text-gray-400 {
-  color: rgba(156, 163, 175, var(--tw-text-opacity));
-}
-
-.group:hover .group-hover\:dark .group-hover\:text-gray-500 {
-  color: rgba(156, 163, 175, var(--tw-text-opacity));
-}
-
-.group:hover .group-hover\:dark .group-hover\:text-gray-500.group-hover\:nightwind-prevent {
-  color: rgba(107, 114, 128, var(--tw-text-opacity));
-}
-
-.group:hover .group-hover\:dark .group-hover\:nightwind-prevent-block .group-hover\:text-gray-500 {
-  color: rgba(107, 114, 128, var(--tw-text-opacity));
-}
-
 .group:hover .group-hover\:dark .group-hover\:text-gray-700 {
   color: rgba(229, 231, 235, var(--tw-text-opacity));
 }
@@ -7595,54 +7542,14 @@ textarea {
   color: rgba(17, 24, 39, var(--tw-text-opacity));
 }
 
-.group:hover .group-hover\:text-gray-500 {
-  --tw-text-opacity: 1;
-  color: rgba(107, 114, 128, var(--tw-text-opacity));
-}
-
-.group:hover .group-hover\:text-gray-700 {
-  --tw-text-opacity: 1;
-  color: rgba(55, 65, 81, var(--tw-text-opacity));
-}
-
 .group:hover .group-hover\:text-gray-900 {
   --tw-text-opacity: 1;
   color: rgba(17, 24, 39, var(--tw-text-opacity));
 }
 
-.group:hover .group-hover\:text-gray-200 {
+.group:hover .group-hover\:text-gray-700 {
   --tw-text-opacity: 1;
-  color: rgba(229, 231, 235, var(--tw-text-opacity));
-}
-
-.group:hover .group-hover\:text-gray-300 {
-  --tw-text-opacity: 1;
-  color: rgba(209, 213, 219, var(--tw-text-opacity));
-}
-
-.group:hover .group-hover\:text-gray-400 {
-  --tw-text-opacity: 1;
-  color: rgba(156, 163, 175, var(--tw-text-opacity));
-}
-
-.group:hover .group-hover\:nightwind .group-hover\:text-gray-200 {
-  transition-duration: 300ms;
-  transition-property: background-color, border-color, color, fill, stroke;
-}
-
-.group:hover .group-hover\:nightwind .group-hover\:text-gray-300 {
-  transition-duration: 300ms;
-  transition-property: background-color, border-color, color, fill, stroke;
-}
-
-.group:hover .group-hover\:nightwind .group-hover\:text-gray-400 {
-  transition-duration: 300ms;
-  transition-property: background-color, border-color, color, fill, stroke;
-}
-
-.group:hover .group-hover\:nightwind .group-hover\:text-gray-500 {
-  transition-duration: 300ms;
-  transition-property: background-color, border-color, color, fill, stroke;
+  color: rgba(55, 65, 81, var(--tw-text-opacity));
 }
 
 .group:hover .group-hover\:nightwind .group-hover\:text-gray-700 {

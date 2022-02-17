@@ -54,7 +54,7 @@ export default class Layout extends Nullstack {
 
   renderLeftNavHeader() {
     return (
-      <div class="flex items-center flex-shrink-0 px-4 text-3xl text-blue-500 justify-between">
+      <div class="flex items-center flex-shrink-0 text-3xl text-blue-500 justify-between py-5 px-5">
         Knowtz
         <button
           onclick={this.createNote}
@@ -160,11 +160,11 @@ export default class Layout extends Nullstack {
         <div class="hidden lg:flex lg:flex-shrink-0">
           <div class="flex flex-col w-64">
             <div class="flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-gray-100">
-              <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto scrollbar-thin scrollbar-thumb-rounded-md scrollbar-thumb-gray-900 scrollbar-track-gray-700">
-                <LeftNavHeader />
+              <LeftNavHeader />
+              <div class="flex-1 flex flex-col pb-4 overflow-y-auto scrollbar-thin scrollbar-thumb-rounded-md scrollbar-thumb-gray-900 scrollbar-track-gray-700">
                 <NotesList />
               </div>
-              <Avatar />
+              {/* <Avatar /> */}
             </div>
           </div>
         </div>

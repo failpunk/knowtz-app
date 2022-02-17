@@ -115,15 +115,13 @@ export default class Todos extends Nullstack {
             id="person-2"
             name="person-2"
             type="checkbox"
-            class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+            class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded cursor-pointer"
             todo={todo}
             onclick={this.toggleTodo}
           />
         </div>
         <div class="min-w-0 flex-1 text-sm">
-          <label for="person-2" class={`font-medium text-gray-700 select-none ${(todo.isComplete &&= 'line-through opacity-60')}`}>
-            {todo.text}
-          </label>
+          <label class={`font-medium text-gray-700 ${(todo.isComplete &&= 'line-through opacity-60')}`}>{todo.text}</label>
         </div>
       </div>
     )

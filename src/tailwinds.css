@@ -6951,6 +6951,10 @@ select {
   transform-origin: top right;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .select-none {
   -webkit-user-select: none;
      -moz-user-select: none;

@@ -131,7 +131,7 @@ export default class Todos extends Nullstack {
 
   renderTodosList() {
     return (
-      <div class="mt-4 border-b border-gray-300 divide-y divide-gray-300 overflow-y-auto h-screen scrollbar-thin scrollbar-thumb-rounded-md scrollbar-thumb-gray-900 scrollbar-track-gray-700">
+      <div class="py-6 px-4 sm:px-6 lg:px-8 border-b border-gray-300 divide-y divide-gray-300 overflow-y-auto h-screen scrollbar-thin scrollbar-thumb-rounded-md scrollbar-thumb-gray-900 scrollbar-track-gray-700">
         {this.getTodos().map((todo) => (
           <Todo todo={todo} />
         ))}
@@ -200,7 +200,7 @@ export default class Todos extends Nullstack {
 
   renderTodoHeader() {
     return (
-      <div class="px-4 py-5 sm:px-6 ">
+      <div class="px-4 py-5 sm:px-6">
         <div class="flex justify-between">
           <div class="flex-shrink-0">
             <h2 class="text-xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">Todos</h2>
@@ -220,9 +220,13 @@ export default class Todos extends Nullstack {
 
   render() {
     return (
-      <div>
-        <TodoHeader />
-        <TodosList />
+      <div class="absolute inset-0">
+        <div class="h-full rounded-lg">
+          <div>
+            <TodoHeader />
+            <TodosList />
+          </div>
+        </div>
       </div>
     )
   }

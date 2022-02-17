@@ -47,16 +47,32 @@ export default class Layout extends Nullstack {
           {this.notes.map((note) => (
             <NavItem note={note} isActive={note.hash === this.currentNote.hash} />
           ))}
-
-          <a href="#" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md" onclick={this.createNote}>
-            <PlusSvg />
-            Create New Note
-          </a>
         </div>
       </nav>
     )
   }
 
+  renderLeftNavHeader() {
+    return (
+      <div class="flex items-center flex-shrink-0 px-4 text-3xl text-blue-500 justify-between">
+        Knowtz
+        <button
+          onclick={this.createNote}
+          type="button"
+          class="inline-flex items-center p-1 border border-transparent rounded-full shadow-sm text-white bg-blue-500 hover:bg-blue-600 focus:outline-none"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+            />
+          </svg>
+        </button>
+      </div>
+    )
+  }
   renderNavItem({ note, isActive = false }) {
     const css = isActive ? 'bg-gray-200 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
 
@@ -144,8 +160,8 @@ export default class Layout extends Nullstack {
         <div class="hidden lg:flex lg:flex-shrink-0">
           <div class="flex flex-col w-64">
             <div class="flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-gray-100">
-              <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-                <div class="flex items-center flex-shrink-0 px-4 text-3xl text-blue-500">Knowtz App</div>
+              <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto scrollbar-thin scrollbar-thumb-rounded-md scrollbar-thumb-gray-900 scrollbar-track-gray-700">
+                <LeftNavHeader />
                 <NotesList />
               </div>
               <Avatar />
@@ -169,16 +185,8 @@ export default class Layout extends Nullstack {
             </div>
           </div>
           <div class="flex-1 relative z-0 flex overflow-hidden ">
-            <main class="flex-1 relative z-0 overflow-y-auto focus:outline-none xl:order-last scrollbar">
-              <div class="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
-                <div class="h-full rounded-lg">{rightColumn}</div>
-              </div>
-            </main>
-            <aside class="hidden relative xl:order-first xl:flex xl:flex-col flex-shrink-0 w-96 border-r border-gray-200 ">
-              <div class="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
-                <div class="h-full rounded-lg">{leftColumn}</div>
-              </div>
-            </aside>
+            <main class="flex-1 relative z-0 overflow-y-auto focus:outline-none xl:order-last scrollbar">{rightColumn}</main>
+            <aside class="hidden relative xl:order-first xl:flex xl:flex-col flex-shrink-0 w-96 border-r border-gray-200 ">{leftColumn}</aside>
           </div>
         </div>
       </div>

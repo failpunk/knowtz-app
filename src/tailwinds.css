@@ -7061,6 +7061,16 @@ select {
   border-color: rgba(209, 213, 219, var(--tw-border-opacity));
 }
 
+.border-gray-400 {
+  --tw-border-opacity: 1;
+  border-color: rgba(156, 163, 175, var(--tw-border-opacity));
+}
+
+.border-gray-500 {
+  --tw-border-opacity: 1;
+  border-color: rgba(107, 114, 128, var(--tw-border-opacity));
+}
+
 .bg-gray-200 {
   --tw-bg-opacity: 1;
   background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
@@ -7091,6 +7101,16 @@ select {
   background-color: rgba(79, 70, 229, var(--tw-bg-opacity));
 }
 
+.bg-blue-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(37, 99, 235, var(--tw-bg-opacity));
+}
+
+.bg-blue-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(59, 130, 246, var(--tw-bg-opacity));
+}
+
 .bg-opacity-75 {
   --tw-bg-opacity: 0.75;
 }
@@ -7105,6 +7125,10 @@ select {
 
 .p-2 {
   padding: 0.5rem;
+}
+
+.p-1 {
+  padding: 0.25rem;
 }
 
 .px-2 {
@@ -7181,6 +7205,11 @@ select {
   line-height: 1.25rem;
 }
 
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
@@ -7228,14 +7257,14 @@ select {
   color: rgba(55, 65, 81, var(--tw-text-opacity));
 }
 
-.text-white {
-  --tw-text-opacity: 1;
-  color: rgba(255, 255, 255, var(--tw-text-opacity));
-}
-
 .text-gray-500 {
   --tw-text-opacity: 1;
   color: rgba(107, 114, 128, var(--tw-text-opacity));
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
 }
 
 .text-blue-500 {
@@ -7360,7 +7389,27 @@ select {
   transition-property: background-color, border-color, color, fill, stroke;
 }
 
+.nightwind .border-gray-400 {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
+.nightwind .border-gray-500 {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
 .nightwind .text-blue-500 {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
+.nightwind .bg-blue-500 {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
+.nightwind .bg-blue-600 {
   transition-duration: 300ms;
   transition-property: background-color, border-color, color, fill, stroke;
 }
@@ -7447,6 +7496,14 @@ select {
   --scrollbar-track: #374151 !important;
 }
 
+.scrollbar-track-gray-\38 00 {
+  --scrollbar-track: #1f2937 !important;
+}
+
+.scrollbar-thumb-gray-\38 00 {
+  --scrollbar-thumb: #1f2937 !important;
+}
+
 .scrollbar-thumb-gray-\39 00 {
   --scrollbar-thumb: #111827 !important;
 }
@@ -7509,6 +7566,16 @@ textarea {
   --tw-ring-color: rgba(99, 102, 241, var(--tw-ring-opacity));
 }
 
+.focus\:ring-blue-500:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgba(59, 130, 246, var(--tw-ring-opacity));
+}
+
+.focus\:ring-blue-400:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgba(96, 165, 250, var(--tw-ring-opacity));
+}
+
 .focus\:ring-offset-2:focus {
   --tw-ring-offset-width: 2px;
 }
@@ -7516,6 +7583,54 @@ textarea {
 .focus\:nightwind:focus .focus\:border-transparent:focus {
   transition-duration: 300ms;
   transition-property: background-color, border-color, color, fill, stroke;
+}
+
+.group:hover .group-hover\:dark .group-hover\:text-gray-200 {
+  color: rgba(55, 65, 81, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:dark .group-hover\:text-gray-200.group-hover\:nightwind-prevent {
+  color: rgba(229, 231, 235, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:dark .group-hover\:nightwind-prevent-block .group-hover\:text-gray-200 {
+  color: rgba(229, 231, 235, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:dark .group-hover\:text-gray-300 {
+  color: rgba(75, 85, 99, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:dark .group-hover\:text-gray-300.group-hover\:nightwind-prevent {
+  color: rgba(209, 213, 219, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:dark .group-hover\:nightwind-prevent-block .group-hover\:text-gray-300 {
+  color: rgba(209, 213, 219, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:dark .group-hover\:text-gray-400 {
+  color: rgba(107, 114, 128, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:dark .group-hover\:text-gray-400.group-hover\:nightwind-prevent {
+  color: rgba(156, 163, 175, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:dark .group-hover\:nightwind-prevent-block .group-hover\:text-gray-400 {
+  color: rgba(156, 163, 175, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:dark .group-hover\:text-gray-500 {
+  color: rgba(156, 163, 175, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:dark .group-hover\:text-gray-500.group-hover\:nightwind-prevent {
+  color: rgba(107, 114, 128, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:dark .group-hover\:nightwind-prevent-block .group-hover\:text-gray-500 {
+  color: rgba(107, 114, 128, var(--tw-text-opacity));
 }
 
 .group:hover .group-hover\:dark .group-hover\:text-gray-700 {
@@ -7542,14 +7657,54 @@ textarea {
   color: rgba(17, 24, 39, var(--tw-text-opacity));
 }
 
-.group:hover .group-hover\:text-gray-900 {
+.group:hover .group-hover\:text-gray-500 {
   --tw-text-opacity: 1;
-  color: rgba(17, 24, 39, var(--tw-text-opacity));
+  color: rgba(107, 114, 128, var(--tw-text-opacity));
 }
 
 .group:hover .group-hover\:text-gray-700 {
   --tw-text-opacity: 1;
   color: rgba(55, 65, 81, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:text-gray-900 {
+  --tw-text-opacity: 1;
+  color: rgba(17, 24, 39, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:text-gray-200 {
+  --tw-text-opacity: 1;
+  color: rgba(229, 231, 235, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:text-gray-300 {
+  --tw-text-opacity: 1;
+  color: rgba(209, 213, 219, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:text-gray-400 {
+  --tw-text-opacity: 1;
+  color: rgba(156, 163, 175, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:nightwind .group-hover\:text-gray-200 {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
+.group:hover .group-hover\:nightwind .group-hover\:text-gray-300 {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
+.group:hover .group-hover\:nightwind .group-hover\:text-gray-400 {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
+.group:hover .group-hover\:nightwind .group-hover\:text-gray-500 {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
 }
 
 .group:hover .group-hover\:nightwind .group-hover\:text-gray-700 {
@@ -7598,6 +7753,30 @@ textarea {
   background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
 }
 
+.hover\:bg-blue-600:hover {
+  background-color: rgba(147, 197, 253, var(--tw-bg-opacity));
+}
+
+.hover\:nightwind-prevent:hover {
+  background-color: rgba(37, 99, 235, var(--tw-bg-opacity));
+}
+
+.hover\:bg-blue-600:hover {
+  background-color: rgba(37, 99, 235, var(--tw-bg-opacity));
+}
+
+.hover\:bg-blue-700:hover {
+  background-color: rgba(191, 219, 254, var(--tw-bg-opacity));
+}
+
+.hover\:nightwind-prevent:hover {
+  background-color: rgba(29, 78, 216, var(--tw-bg-opacity));
+}
+
+.hover\:bg-blue-700:hover {
+  background-color: rgba(29, 78, 216, var(--tw-bg-opacity));
+}
+
 .hover\:bg-indigo-700:hover {
   background-color: rgba(199, 210, 254, var(--tw-bg-opacity));
 }
@@ -7620,6 +7799,16 @@ textarea {
   background-color: rgba(67, 56, 202, var(--tw-bg-opacity));
 }
 
+.hover\:bg-blue-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(29, 78, 216, var(--tw-bg-opacity));
+}
+
+.hover\:bg-blue-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(37, 99, 235, var(--tw-bg-opacity));
+}
+
 .hover\:text-gray-900:hover {
   --tw-text-opacity: 1;
   color: rgba(17, 24, 39, var(--tw-text-opacity));
@@ -7638,6 +7827,16 @@ textarea {
 }
 
 .hover\:bg-gray-50:hover {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
+.hover\:bg-blue-600:hover {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
+.hover\:bg-blue-700:hover {
   transition-duration: 300ms;
   transition-property: background-color, border-color, color, fill, stroke;
 }

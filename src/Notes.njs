@@ -116,8 +116,8 @@ export default class Notes extends Nullstack {
 
   render() {
     return (
-      <div class="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
-        <div class="h-full rounded-lg">
+      <div class="absolute inset-0 pt-5 pb-3 px-4 sm:px-6 lg:px-8">
+        <div class="h-full rounded-lg overflow-hidden">
           <section>
             <article>{this.note.name ? <Note /> : <Splash />}</article>
           </section>

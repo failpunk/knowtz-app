@@ -2,6 +2,7 @@ import Nullstack from 'nullstack'
 import SparkleSvg from './svg/SparkleSvg'
 import { debounce } from 'lodash-es'
 import { saveNote, deleteNote, fetchNotesList, fetchNote, updateName } from './services/database'
+import { random } from 'nanoid'
 
 export default class Notes extends Nullstack {
   note = { text: '', name: '' }
@@ -20,7 +21,13 @@ export default class Notes extends Nullstack {
       this.note = currentNote
     }
 
-    this.save = debounce(saveNote, 1000) // todo: move to client???
+    this.save = debounce(this.saveNoteAndNotify, 1000) // todo: move to client???
+  }
+
+  // Save the current note and trigger a context update so we search for todos
+  saveNoteAndNotify({ hash, text, context }) {
+    saveNote({ hash, text })
+    context.updated = !context.updated
   }
 
   async update({ currentNote }) {
@@ -33,7 +40,8 @@ export default class Notes extends Nullstack {
   handleNoteUpdated(context) {
     context.currentNote = this.note
     const { hash, text } = this.note
-    this.save({ hash, text })
+    this.save({ hash, text, context })
+    context.updated = true
   }
 
   updateName(context) {

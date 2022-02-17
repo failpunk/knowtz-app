@@ -8,9 +8,18 @@ export default class Notes extends Nullstack {
   save
 
   async hydrate({ currentNote }) {
+    // Capture the TAB key when used within a textarea, then insert two spaces.
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Tab' && event.target.type === 'textarea') {
+        event.preventDefault()
+        event.target.setRangeText('  ', event.target.selectionStart, event.target.selectionStart, 'end')
+      }
+    })
+
     if (currentNote) {
       this.note = currentNote
     }
+
     this.save = debounce(saveNote, 1000) // todo: move to client???
   }
 

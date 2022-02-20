@@ -1,6 +1,5 @@
 import Nullstack from 'nullstack'
 import BookSvg from './svg/BookSvg'
-import PlusSvg from './svg/PlusSvg'
 import { createNewNote, fetchNote, fetchNotesList, updateUserName, fetchUser } from './services/database'
 
 const NAME_PLACEHOLDER = 'Your Name'
@@ -12,6 +11,7 @@ export default class Layout extends Nullstack {
   createNote(context) {
     context.currentNote = createNewNote()
     context.notes = fetchNotesList()
+    context.mixpanel.track('Note Created')
   }
 
   selectNote(context) {

@@ -23,9 +23,10 @@ export default class Todos extends Nullstack {
     this.menuOpen = !this.menuOpen
   }
 
-  toggleShowHideCompleted() {
+  toggleShowHideCompleted({ mixpanel }) {
     this.hideCompleted = !this.hideCompleted
     this.menuOpen = false
+    mixpanel.track(`Completed Todos ${this.hideCompleted ? 'Hidden' : 'Shown'}`)
   }
 
   // Sort by not completed first

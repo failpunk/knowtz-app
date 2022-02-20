@@ -2,7 +2,6 @@ import Nullstack from 'nullstack'
 import SparkleSvg from './svg/SparkleSvg'
 import { debounce } from 'lodash-es'
 import { saveNote, deleteNote, fetchNotesList, fetchNote, updateName } from './services/database'
-import { random } from 'nanoid'
 
 export default class Notes extends Nullstack {
   note = { text: '', name: '' }
@@ -58,6 +57,7 @@ export default class Notes extends Nullstack {
     context.notes = fetchNotesList()
     const firstNote = context.notes[0] || {}
     context.currentNote = { ...firstNote, text: fetchNote(firstNote.hash) }
+    context.mixpanel.track('Note Deleted')
   }
 
   renderTextarea() {

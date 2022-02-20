@@ -1,8 +1,16 @@
 import Nullstack from 'nullstack'
 import Application from './src/Application'
 import { fetchNotesList, fetchNote } from './src/services/database'
+import mixpanel from 'mixpanel-browser'
 
 const context = Nullstack.start(Application)
+
+// enable debug in dev env
+const { mixpanelKey } = context.settings
+mixpanel.init(mixpanelKey, { debug: context.environment.development })
+mixpanel.track('Knowtz Started')
+
+context.mixpanel = mixpanel
 
 // Read notes from localStorage
 context.notes = fetchNotesList()

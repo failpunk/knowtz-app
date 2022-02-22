@@ -136,7 +136,7 @@ export default class Notes extends Nullstack {
       <div class="absolute inset-0 pt-5 pb-3 px-4 sm:px-6 lg:px-8">
         <div class="h-full rounded-lg overflow-hidden">
           <section>
-            <article>{this.note.name ? <Note /> : <Splash />}</article>
+            <article>{this.note.hash ? <Note /> : <Splash />}</article>
           </section>
         </div>
       </div>

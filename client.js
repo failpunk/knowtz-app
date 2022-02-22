@@ -6,8 +6,8 @@ import mixpanel from 'mixpanel-browser'
 const context = Nullstack.start(Application)
 
 // enable debug in dev env
-const { mixpanelKey } = context.settings
-mixpanel.init(mixpanelKey, { debug: context.environment.development })
+const { mixpanelKey, mixpanelDebug } = context.settings
+mixpanel.init(mixpanelKey, { debug: mixpanelDebug === 'true' })
 mixpanel.track('Knowtz Started')
 
 context.mixpanel = mixpanel

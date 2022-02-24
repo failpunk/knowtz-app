@@ -6746,10 +6746,6 @@ select {
   z-index: 40;
 }
 
-.z-0 {
-  z-index: 0;
-}
-
 .z-30 {
   z-index: 30;
 }
@@ -6795,16 +6791,8 @@ select {
   margin-bottom: 1.25rem;
 }
 
-.-ml-0\.5 {
-  margin-left: -0.125rem;
-}
-
-.mr-2 {
-  margin-right: 0.5rem;
-}
-
-.-ml-0 {
-  margin-left: 0px;
+.mb-4 {
+  margin-bottom: 1rem;
 }
 
 .mt-4 {
@@ -6813,6 +6801,10 @@ select {
 
 .mt-1 {
   margin-top: 0.25rem;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
 }
 
 .mr-3 {
@@ -6975,16 +6967,6 @@ select {
   transform-origin: top right;
 }
 
-.translate-y-4 {
-  --tw-translate-y: 1rem;
-  transform: var(--tw-transform);
-}
-
-.translate-y-0 {
-  --tw-translate-y: 0px;
-  transform: var(--tw-transform);
-}
-
 .transform {
   transform: var(--tw-transform);
 }
@@ -7130,11 +7112,6 @@ select {
   background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
 }
 
-.bg-indigo-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgba(79, 70, 229, var(--tw-bg-opacity));
-}
-
 .bg-gray-500 {
   --tw-bg-opacity: 1;
   background-color: rgba(107, 114, 128, var(--tw-bg-opacity));
@@ -7143,26 +7120,6 @@ select {
 .bg-red-100 {
   --tw-bg-opacity: 1;
   background-color: rgba(254, 226, 226, var(--tw-bg-opacity));
-}
-
-.bg-red-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgba(220, 38, 38, var(--tw-bg-opacity));
-}
-
-.bg-red-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgba(239, 68, 68, var(--tw-bg-opacity));
-}
-
-.bg-red-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgba(248, 113, 113, var(--tw-bg-opacity));
-}
-
-.bg-red-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgba(252, 165, 165, var(--tw-bg-opacity));
 }
 
 .bg-opacity-75 {
@@ -7218,11 +7175,6 @@ select {
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
-}
-
-.px-2\.5 {
-  padding-left: 0.625rem;
-  padding-right: 0.625rem;
 }
 
 .py-4 {
@@ -7378,14 +7330,6 @@ select {
   opacity: 0.6;
 }
 
-.opacity-0 {
-  opacity: 0;
-}
-
-.opacity-100 {
-  opacity: 1;
-}
-
 .shadow-sm {
   --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
@@ -7430,22 +7374,6 @@ select {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
-}
-
-.duration-300 {
-  transition-duration: 300ms;
-}
-
-.duration-200 {
-  transition-duration: 200ms;
-}
-
-.ease-out {
-  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-}
-
-.ease-in {
-  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
 
 .nightwind .border-transparent {
@@ -7533,26 +7461,6 @@ select {
   transition-property: background-color, border-color, color, fill, stroke;
 }
 
-.nightwind .bg-red-300 {
-  transition-duration: 300ms;
-  transition-property: background-color, border-color, color, fill, stroke;
-}
-
-.nightwind .bg-red-400 {
-  transition-duration: 300ms;
-  transition-property: background-color, border-color, color, fill, stroke;
-}
-
-.nightwind .bg-red-500 {
-  transition-duration: 300ms;
-  transition-property: background-color, border-color, color, fill, stroke;
-}
-
-.nightwind .bg-red-600 {
-  transition-duration: 300ms;
-  transition-property: background-color, border-color, color, fill, stroke;
-}
-
 .nightwind .text-blue-500 {
   transition-duration: 300ms;
   transition-property: background-color, border-color, color, fill, stroke;
@@ -7564,11 +7472,6 @@ select {
 }
 
 .nightwind .text-indigo-600 {
-  transition-duration: 300ms;
-  transition-property: background-color, border-color, color, fill, stroke;
-}
-
-.nightwind .bg-indigo-600 {
   transition-duration: 300ms;
   transition-property: background-color, border-color, color, fill, stroke;
 }
@@ -7707,11 +7610,6 @@ textarea {
   --tw-ring-color: rgba(99, 102, 241, var(--tw-ring-opacity));
 }
 
-.focus\:ring-red-500:focus {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgba(239, 68, 68, var(--tw-ring-opacity));
-}
-
 .focus\:ring-offset-2:focus {
   --tw-ring-offset-width: 2px;
 }
@@ -7825,18 +7723,6 @@ textarea {
   background-color: rgba(254, 202, 202, var(--tw-bg-opacity));
 }
 
-.hover\:bg-red-700:hover {
-  background-color: rgba(254, 202, 202, var(--tw-bg-opacity));
-}
-
-.hover\:nightwind-prevent:hover {
-  background-color: rgba(185, 28, 28, var(--tw-bg-opacity));
-}
-
-.hover\:bg-red-700:hover {
-  background-color: rgba(185, 28, 28, var(--tw-bg-opacity));
-}
-
 .hover\:bg-blue-600:hover {
   background-color: rgba(147, 197, 253, var(--tw-bg-opacity));
 }
@@ -7847,21 +7733,6 @@ textarea {
 
 .hover\:bg-blue-600:hover {
   background-color: rgba(37, 99, 235, var(--tw-bg-opacity));
-}
-
-.hover\:bg-indigo-700:hover {
-  background-color: rgba(199, 210, 254, var(--tw-bg-opacity));
-}
-
-.hover\:nightwind-prevent:hover {
-  background-color: rgba(67, 56, 202, var(--tw-bg-opacity));
-}
-
-.hover\:bg-indigo-700:hover {
-  background-color: rgba(67, 56, 202, var(--tw-bg-opacity));
-}
-
-.hover\:bg-blue-600:hover {
   --tw-bg-opacity: 1;
   background-color: rgba(37, 99, 235, var(--tw-bg-opacity));
 }
@@ -7869,16 +7740,6 @@ textarea {
 .hover\:bg-gray-50:hover {
   --tw-bg-opacity: 1;
   background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
-}
-
-.hover\:bg-indigo-700:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgba(67, 56, 202, var(--tw-bg-opacity));
-}
-
-.hover\:bg-red-700:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgba(185, 28, 28, var(--tw-bg-opacity));
 }
 
 .hover\:bg-red-200:hover {
@@ -7923,17 +7784,7 @@ textarea {
   transition-property: background-color, border-color, color, fill, stroke;
 }
 
-.hover\:bg-red-700:hover {
-  transition-duration: 300ms;
-  transition-property: background-color, border-color, color, fill, stroke;
-}
-
 .hover\:bg-blue-600:hover {
-  transition-duration: 300ms;
-  transition-property: background-color, border-color, color, fill, stroke;
-}
-
-.hover\:bg-indigo-700:hover {
   transition-duration: 300ms;
   transition-property: background-color, border-color, color, fill, stroke;
 }
@@ -7999,23 +7850,6 @@ textarea {
 
   .sm\:max-w-lg {
     max-width: 32rem;
-  }
-
-  .sm\:translate-y-0 {
-    --tw-translate-y: 0px;
-    transform: var(--tw-transform);
-  }
-
-  .sm\:scale-95 {
-    --tw-scale-x: .95;
-    --tw-scale-y: .95;
-    transform: var(--tw-transform);
-  }
-
-  .sm\:scale-100 {
-    --tw-scale-x: 1;
-    --tw-scale-y: 1;
-    transform: var(--tw-transform);
   }
 
   .sm\:flex-row-reverse {

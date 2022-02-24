@@ -2,10 +2,12 @@ import Nullstack from 'nullstack'
 import SparkleSvg from './svg/SparkleSvg'
 import { debounce } from 'lodash-es'
 import { saveNote, deleteNote, fetchNotesList, fetchNote, updateName } from './services/database'
+import Modal from './components/Modal'
 
 export default class Notes extends Nullstack {
   note = { text: '', name: '' }
   save
+  showDeleteModal = false
 
   async hydrate({ currentNote }) {
     // Capture the TAB key when used within a textarea, then insert two spaces.
@@ -52,13 +54,20 @@ export default class Notes extends Nullstack {
     }
   }
 
+  deleteModalCallback({ action }) {
+    if (action === 'primary') {
+      this.deleteNote()
+    }
+    this.showDeleteModal = false
+  }
+
   deleteNote(context) {
     deleteNote(this.note.hash)
     context.notes = fetchNotesList()
     const firstNote = context.notes[0] || {}
     context.currentNote = { ...firstNote, text: fetchNote(firstNote.hash) }
     context.mixpanel.track('Note Deleted')
-  }
+  }F
 
   renderTextarea() {
     return (
@@ -97,18 +106,18 @@ export default class Notes extends Nullstack {
   renderDeleteButton() {
     return (
       <button
+        onclick={() => (this.showDeleteModal = true)}
         type="button"
-        class="ml-3 inline-flex items-center px-2.5 py-1.5 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        onclick={this.deleteNote}
+        class="inline-flex items-center p-1 border border-transparent rounded-full shadow-sm text-white bg-blue-500 hover:bg-blue-600 focus:outline-none"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" class="-ml-0.5 mr-2 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
-            fill-rule="evenodd"
-            d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-            clip-rule="evenodd"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
           />
         </svg>
-        Delete
       </button>
     )
   }
@@ -131,15 +140,22 @@ export default class Notes extends Nullstack {
     )
   }
 
+  renderDeleteModal() {
+    return <Modal title="Delete Note" text="Are you sure you want to permanently delete this note?" primaryText="Delete Note" onClose={this.deleteModalCallback} />
+  }
+
   render() {
     return (
-      <div class="absolute inset-0 pt-5 pb-3 px-4 sm:px-6 lg:px-8">
-        <div class="h-full rounded-lg overflow-hidden">
-          <section>
-            <article>{this.note.hash ? <Note /> : <Splash />}</article>
-          </section>
+      <>
+        {this.showDeleteModal && <DeleteModal />}
+        <div class="absolute inset-0 pt-5 pb-3 px-4 sm:px-6 lg:px-8">
+          <div class="h-full rounded-lg overflow-hidden">
+            <section>
+              <article>{this.note.hash ? <Note /> : <Splash />}</article>
+            </section>
+          </div>
         </div>
-      </div>
+      </>
     )
   }
 }

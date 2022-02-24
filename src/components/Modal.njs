@@ -1,5 +1,10 @@
 import Nullstack from 'nullstack'
 
+/**
+ * Usage
+ *
+ * <Modal title="Delete Note" text="Are you sure you want to permanently delete this note?" primaryText="Delete Note" onClose={this.deleteModalCallback} />
+ */
 export default class Modal extends Nullstack {
   handlePrimaryClick({ onClose }) {
     onClose({ action: 'primary' })

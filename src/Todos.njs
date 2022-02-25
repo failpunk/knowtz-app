@@ -130,7 +130,7 @@ export default class Todos extends Nullstack {
 
   renderTodosList() {
     return (
-      <div class="py-6 px-4 sm:px-6 lg:px-8 border-b border-gray-300 divide-y divide-gray-300 overflow-y-auto h-screen scrollbar-thin scrollbar-thumb-rounded-md scrollbar-thumb-gray-900 scrollbar-track-gray-700">
+      <div class="pt-6 px-4 pb-20 sm:px-6 lg:px-8 border-b border-gray-300 divide-y divide-gray-300 overflow-y-auto h-screen scrollbar-thin scrollbar-thumb-rounded-md scrollbar-thumb-gray-900 scrollbar-track-gray-700">
         {this.getTodos().map((todo) => (
           <Todo todo={todo} />
         ))}

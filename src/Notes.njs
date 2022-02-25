@@ -149,7 +149,7 @@ export default class Notes extends Nullstack {
     )
   }
 
-  renderNote() {
+  renderNote({ notes }) {
     return (
       <div>
         <div class="md:flex md:items-center md:justify-between mb-5 border-b-2 pb-2">
@@ -160,7 +160,7 @@ export default class Notes extends Nullstack {
             <span class="mr-3">
               <DeleteButton />
             </span>
-            {this.note.name !== 'Archive' && <ArchiveButton />}
+            {notes.length > 1 && this.note.name !== 'Archive' && <ArchiveButton />}
           </div>
         </div>
         <div class="mt-1 ">
@@ -171,7 +171,15 @@ export default class Notes extends Nullstack {
   }
 
   renderArchiveModal() {
-    return <Modal title="Archive Note" text="Are you sure you want to permanently archive this note?" primaryText="Archive Note" onClose={this.archiveModalCallback} style="info" />
+    return (
+      <Modal
+        title="Archive Note"
+        text="This will delete the original note from your list and add the text to a single archive.  Use this to clean up your notes list while retaining text you no longer plan to edit on a regular basis."
+        primaryText="Archive Note"
+        onClose={this.archiveModalCallback}
+        style="info"
+      />
+    )
   }
 
   renderDeleteModal() {

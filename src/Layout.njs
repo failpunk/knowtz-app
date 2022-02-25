@@ -2,8 +2,6 @@ import Nullstack from 'nullstack'
 import BookSvg from './svg/BookSvg'
 import { createNewNote, fetchNote, fetchNotesList, updateUserName, fetchUser, ARCHIVE_NOTES_HASH } from './services/database'
 
-console.log('------> ARCHIVE_NOTES_HASH', ARCHIVE_NOTES_HASH)
-
 const NAME_PLACEHOLDER = 'Your Name'
 export default class Layout extends Nullstack {
   username
@@ -53,7 +51,7 @@ export default class Layout extends Nullstack {
           {this.notes.map((note) => (
             <NavItem note={note} isActive={note.hash === this.currentNote.hash} />
           ))}
-          <NavArchiveItem />
+          {this.notes.length > 0 && <NavArchiveItem />}
         </div>
       </nav>
     )

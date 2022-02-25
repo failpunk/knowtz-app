@@ -67,7 +67,7 @@ export default class Notes extends Nullstack {
     const firstNote = context.notes[0] || {}
     context.currentNote = { ...firstNote, text: fetchNote(firstNote.hash) }
     context.mixpanel.track('Note Deleted')
-  }F
+  }
 
   renderTextarea() {
     return (

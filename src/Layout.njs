@@ -73,6 +73,7 @@ export default class Layout extends Nullstack {
       </div>
     )
   }
+
   renderNavItem({ note, isActive = false }) {
     const css = isActive ? 'bg-gray-200 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
 

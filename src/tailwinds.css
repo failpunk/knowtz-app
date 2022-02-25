@@ -6754,6 +6754,10 @@ select {
   z-index: 10;
 }
 
+.z-0 {
+  z-index: 0;
+}
+
 .-m-2 {
   margin: -0.5rem;
 }
@@ -6817,6 +6821,14 @@ select {
 
 .mt-3 {
   margin-top: 0.75rem;
+}
+
+.-ml-0\.5 {
+  margin-left: -0.125rem;
+}
+
+.-ml-0 {
+  margin-left: 0px;
 }
 
 .block {
@@ -7122,6 +7134,11 @@ select {
   background-color: rgba(254, 226, 226, var(--tw-bg-opacity));
 }
 
+.bg-indigo-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(79, 70, 229, var(--tw-bg-opacity));
+}
+
 .bg-opacity-75 {
   --tw-bg-opacity: 0.75;
 }
@@ -7185,6 +7202,11 @@ select {
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+}
+
+.px-2\.5 {
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
 }
 
 .pt-2 {
@@ -7476,6 +7498,11 @@ select {
   transition-property: background-color, border-color, color, fill, stroke;
 }
 
+.nightwind .bg-indigo-600 {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
 .scrollbar {
   --scrollbar-track: initial;
   --scrollbar-thumb: initial;
@@ -7733,6 +7760,21 @@ textarea {
 
 .hover\:bg-blue-600:hover {
   background-color: rgba(37, 99, 235, var(--tw-bg-opacity));
+}
+
+.hover\:bg-indigo-700:hover {
+  background-color: rgba(199, 210, 254, var(--tw-bg-opacity));
+}
+
+.hover\:nightwind-prevent:hover {
+  background-color: rgba(67, 56, 202, var(--tw-bg-opacity));
+}
+
+.hover\:bg-indigo-700:hover {
+  background-color: rgba(67, 56, 202, var(--tw-bg-opacity));
+}
+
+.hover\:bg-blue-600:hover {
   --tw-bg-opacity: 1;
   background-color: rgba(37, 99, 235, var(--tw-bg-opacity));
 }
@@ -7745,6 +7787,11 @@ textarea {
 .hover\:bg-red-200:hover {
   --tw-bg-opacity: 1;
   background-color: rgba(254, 202, 202, var(--tw-bg-opacity));
+}
+
+.hover\:bg-indigo-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(67, 56, 202, var(--tw-bg-opacity));
 }
 
 .hover\:text-gray-900:hover {
@@ -7785,6 +7832,11 @@ textarea {
 }
 
 .hover\:bg-blue-600:hover {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
+.hover\:bg-indigo-700:hover {
   transition-duration: 300ms;
   transition-property: background-color, border-color, color, fill, stroke;
 }

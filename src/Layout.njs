@@ -1,6 +1,8 @@
 import Nullstack from 'nullstack'
 import BookSvg from './svg/BookSvg'
-import { createNewNote, fetchNote, fetchNotesList, updateUserName, fetchUser } from './services/database'
+import { createNewNote, fetchNote, fetchNotesList, updateUserName, fetchUser, ARCHIVE_NOTES_HASH } from './services/database'
+
+console.log('------> ARCHIVE_NOTES_HASH', ARCHIVE_NOTES_HASH)
 
 const NAME_PLACEHOLDER = 'Your Name'
 export default class Layout extends Nullstack {
@@ -12,6 +14,10 @@ export default class Layout extends Nullstack {
     context.currentNote = createNewNote()
     context.notes = fetchNotesList()
     context.mixpanel.track('Note Created')
+  }
+
+  selectArchive(context) {
+    context.currentNote = { hash: ARCHIVE_NOTES_HASH, name: 'Archive', text: fetchNote(ARCHIVE_NOTES_HASH) }
   }
 
   selectNote(context) {
@@ -47,6 +53,7 @@ export default class Layout extends Nullstack {
           {this.notes.map((note) => (
             <NavItem note={note} isActive={note.hash === this.currentNote.hash} />
           ))}
+          <NavArchiveItem />
         </div>
       </nav>
     )
@@ -71,6 +78,19 @@ export default class Layout extends Nullstack {
           </svg>
         </button>
       </div>
+    )
+  }
+
+  renderNavArchiveItem() {
+    const css = this.currentNote.hash === ARCHIVE_NOTES_HASH ? 'bg-gray-200 text-gray-900' : 'text-gray-400 hover:bg-gray-50 hover:text-gray-900'
+
+    return (
+      <a href="#" class={`${css} group flex items-center px-2 py-2 text-sm font-medium rounded-md mt-1 border-t border-gray-200`} onclick={this.selectArchive}>
+        <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-400 mr-3 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+        </svg>
+        Archive
+      </a>
     )
   }
 

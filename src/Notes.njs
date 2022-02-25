@@ -160,7 +160,7 @@ export default class Notes extends Nullstack {
             <span class="mr-3">
               <DeleteButton />
             </span>
-            <ArchiveButton />
+            {this.note.name !== 'Archive' && <ArchiveButton />}
           </div>
         </div>
         <div class="mt-1 ">

@@ -1,6 +1,7 @@
 import { nanoid } from 'nanoid'
 
 const NOTES_KEY = 'knowtz'
+export const ARCHIVE_NOTES_HASH = 'archive'
 
 export function fetchAllNotes() {
   const list = fetchNotesList()
@@ -66,13 +67,12 @@ export function archiveNote(hash) {
   const textToArchive = noteInfo.name + '\n=====================================\n\n' + noteText
   console.log('------> textToArchive', textToArchive)
 
-  const archiveLookup = 'archive'
-  const oldArchiveText = fetchNote(archiveLookup)
+  const oldArchiveText = fetchNote(ARCHIVE_NOTES_HASH)
 
   const newArchiveText = `${textToArchive}\n\n${oldArchiveText}`
 
   // save archive
-  saveNote({ hash: archiveLookup, text: newArchiveText })
+  saveNote({ hash: ARCHIVE_NOTES_HASH, text: newArchiveText })
 
   // delete now archived note
   deleteNote(hash)

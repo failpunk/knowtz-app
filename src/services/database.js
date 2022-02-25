@@ -31,8 +31,12 @@ export function saveNotes(list) {
   return window.localStorage.setItem(lookup, JSON.stringify(list))
 }
 
+export function findNoteInList(hash) {
+  return fetchNotesList().find((note) => note.hash === hash)
+}
+
 export function updateName(hash, text) {
-  const noteToUpdate = fetchNotesList().find((note) => note.hash === hash)
+  const noteToUpdate = findNoteInList(hash)
   noteToUpdate.name = text
   const remaining = fetchNotesList().filter((note) => note.hash !== hash)
   remaining.push(noteToUpdate)
@@ -50,6 +54,28 @@ export function deleteNote(hash) {
   const remaining = fetchNotesList().filter((note) => note.hash !== hash)
   window.localStorage.removeItem(lookup)
   saveNotes(remaining)
+}
+
+/**
+ * Archive note to special archive key and remove original note from storage.
+ */
+export function archiveNote(hash) {
+  const noteText = fetchNote(hash)
+  const noteInfo = findNoteInList(hash)
+
+  const textToArchive = noteInfo.name + '\n=====================================\n\n' + noteText
+  console.log('------> textToArchive', textToArchive)
+
+  const archiveLookup = 'archive'
+  const oldArchiveText = fetchNote(archiveLookup)
+
+  const newArchiveText = `${textToArchive}\n\n${oldArchiveText}`
+
+  // save archive
+  saveNote({ hash: archiveLookup, text: newArchiveText })
+
+  // delete now archived note
+  deleteNote(hash)
 }
 
 // Crate note and add to list

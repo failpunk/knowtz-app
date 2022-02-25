@@ -115,3 +115,15 @@ export function updateUserName(username) {
   user.username = username
   saveUser(user)
 }
+
+export function calcDatabaseSize() {
+  var allStrings = ''
+  for (var key in window.localStorage) {
+    if (window.localStorage.hasOwnProperty(key)) {
+      allStrings += window.localStorage[key]
+    }
+  }
+  const size = (allStrings.length * 16) / (8 * 1024)
+  return Math.round(size)
+  // return allStrings ? 3 + Math.round(size) + ' KB' : 'Empty (0 KB)'
+}

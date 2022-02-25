@@ -1,12 +1,13 @@
 import Nullstack from 'nullstack'
 import BookSvg from './svg/BookSvg'
-import { createNewNote, fetchNote, fetchNotesList, updateUserName, fetchUser, ARCHIVE_NOTES_HASH } from './services/database'
+import { createNewNote, fetchNote, fetchNotesList, updateUserName, fetchUser, ARCHIVE_NOTES_HASH, calcDatabaseSize } from './services/database'
 
 const NAME_PLACEHOLDER = 'Your Name'
 export default class Layout extends Nullstack {
   username
   notes = []
   currentNote = {}
+  dbSize = 0
 
   createNote(context) {
     context.currentNote = createNewNote()
@@ -27,6 +28,7 @@ export default class Layout extends Nullstack {
     // console.log('------> LAYOUT UPDATE', currentNote)
     this.notes = notes
     this.currentNote = currentNote || {}
+    this.dbSize = calcDatabaseSize()
   }
 
   hydrate({ notes }) {
@@ -120,6 +122,20 @@ export default class Layout extends Nullstack {
     )
   }
 
+  renderDatabaseSize() {
+    return (
+      <div class="flex-shrink-0 flex border-t border-gray-200 p-4">
+        <a href="#" class="flex-shrink-0 w-full group block">
+          <div class="flex items-center">
+            <div class="ml-3 group">
+              <p class="text-sm font-medium text-gray-700">DB Size: {this.dbSize}/5000 KB</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    )
+  }
+
   render({ leftColumn, rightColumn }) {
     return (
       <div class="h-full flex">
@@ -183,6 +199,7 @@ export default class Layout extends Nullstack {
               <div class="flex-1 flex flex-col pb-4 overflow-y-auto scrollbar-thin scrollbar-thumb-rounded-md scrollbar-thumb-gray-900 scrollbar-track-gray-700">
                 <NotesList />
               </div>
+              <DatabaseSize />
               {/* <Avatar /> */}
             </div>
           </div>

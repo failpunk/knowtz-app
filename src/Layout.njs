@@ -222,7 +222,7 @@ export default class Layout extends Nullstack {
           </div>
           <div class="flex-1 relative z-1 flex overflow-hidden ">
             <main class="flex-1 relative z-1 overflow-y-auto focus:outline-none xl:order-last scrollbar">{rightColumn}</main>
-            <aside class="relative xl:order-first xl:flex xl:flex-col flex-shrink-0 w-96 border-r border-gray-200 ">{leftColumn}</aside>
+            <aside class="hidden relative xl:order-first xl:flex xl:flex-col flex-shrink-0 w-96 border-r border-gray-200 ">{leftColumn}</aside>
           </div>
         </div>
       </div>

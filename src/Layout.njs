@@ -1,6 +1,7 @@
 import Nullstack from 'nullstack'
 import BookSvg from './svg/BookSvg'
 import { createNewNote, fetchNote, fetchNotesList, updateUserName, fetchUser, ARCHIVE_NOTES_HASH, calcDatabaseSize } from './services/database'
+import Settings from './components/Settings.njs'
 
 const NAME_PLACEHOLDER = 'Your Name'
 export default class Layout extends Nullstack {
@@ -8,6 +9,19 @@ export default class Layout extends Nullstack {
   notes = []
   currentNote = {}
   dbSize = 0
+  showSettings = false
+
+  hydrate({ notes }) {
+    this.notes = notes
+    this.setUserName()
+  }
+
+  update({ notes, currentNote }) {
+    // console.log('------> LAYOUT UPDATE', currentNote)
+    this.notes = notes
+    this.currentNote = currentNote || {}
+    this.dbSize = calcDatabaseSize()
+  }
 
   createNote(context) {
     context.currentNote = createNewNote()
@@ -22,18 +36,6 @@ export default class Layout extends Nullstack {
   selectNote(context) {
     const { note } = context
     context.currentNote = { ...note, text: fetchNote(note.hash) }
-  }
-
-  update({ notes, currentNote }) {
-    // console.log('------> LAYOUT UPDATE', currentNote)
-    this.notes = notes
-    this.currentNote = currentNote || {}
-    this.dbSize = calcDatabaseSize()
-  }
-
-  hydrate({ notes }) {
-    this.notes = notes
-    this.setUserName()
   }
 
   setUserName() {
@@ -124,14 +126,13 @@ export default class Layout extends Nullstack {
 
   renderDatabaseSize() {
     return (
-      <div class="flex-shrink-0 flex border-t border-gray-200 p-4">
-        <a href="#" class="flex-shrink-0 w-full group block">
-          <div class="flex items-center">
-            <div class="ml-3 group">
-              <p class="text-sm font-medium text-gray-700">DB Size: {this.dbSize}/5000 KB</p>
-            </div>
+      <div class="flex-shrink-0 flex border-t border-gray-200 p-4 justify-between">
+        <div class="flex items-center">
+          <div class="ml-3 group">
+            <p class="text-sm font-medium text-gray-700">DB Size: {this.dbSize}/5000 KB</p>
           </div>
-        </a>
+        </div>
+        <Settings />
       </div>
     )
   }

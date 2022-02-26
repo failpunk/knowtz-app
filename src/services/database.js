@@ -127,3 +127,11 @@ export function calcDatabaseSize() {
   return Math.round(size)
   // return allStrings ? 3 + Math.round(size) + ' KB' : 'Empty (0 KB)'
 }
+
+// knowtz-list
+// knowtz-archive
+
+export function exportDatabase() {
+  const notes = fetchAllNotes()
+  console.log('------> notes', notes)
+}

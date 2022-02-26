@@ -73,7 +73,7 @@ export default class Modal extends Nullstack {
   /**
    * https://tailwindui.com/components/application-ui/overlays/modals#component-6a0b582f00c5ec38bf748d9a75559f04
    */
-  render({ title, text, onClose, style = 'error' }) {
+  render({ title, text, style = 'error' }) {
     return (
       <div class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">

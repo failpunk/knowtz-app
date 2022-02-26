@@ -6983,6 +6983,16 @@ select {
   transform-origin: top right;
 }
 
+.translate-y-4 {
+  --tw-translate-y: 1rem;
+  transform: var(--tw-transform);
+}
+
+.translate-y-0 {
+  --tw-translate-y: 0px;
+  transform: var(--tw-transform);
+}
+
 .transform {
   transform: var(--tw-transform);
 }
@@ -7166,6 +7176,11 @@ select {
 .bg-blue-400 {
   --tw-bg-opacity: 1;
   background-color: rgba(96, 165, 250, var(--tw-bg-opacity));
+}
+
+.bg-green-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(209, 250, 229, var(--tw-bg-opacity));
 }
 
 .bg-opacity-75 {
@@ -7400,12 +7415,35 @@ select {
   color: rgba(209, 213, 219, var(--tw-text-opacity));
 }
 
+.text-blue-50 {
+  --tw-text-opacity: 1;
+  color: rgba(239, 246, 255, var(--tw-text-opacity));
+}
+
+.text-gray-200 {
+  --tw-text-opacity: 1;
+  color: rgba(229, 231, 235, var(--tw-text-opacity));
+}
+
+.text-green-600 {
+  --tw-text-opacity: 1;
+  color: rgba(5, 150, 105, var(--tw-text-opacity));
+}
+
 .line-through {
   text-decoration: line-through;
 }
 
 .opacity-60 {
   opacity: 0.6;
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
+.opacity-100 {
+  opacity: 1;
 }
 
 .shadow-sm {
@@ -7454,6 +7492,22 @@ select {
   transition-duration: 150ms;
 }
 
+.duration-300 {
+  transition-duration: 300ms;
+}
+
+.duration-200 {
+  transition-duration: 200ms;
+}
+
+.ease-out {
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+.ease-in {
+  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+}
+
 .nightwind .border-transparent {
   transition-duration: 300ms;
   transition-property: background-color, border-color, color, fill, stroke;
@@ -7470,6 +7524,11 @@ select {
 }
 
 .nightwind .text-gray-100 {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
+.nightwind .text-gray-200 {
   transition-duration: 300ms;
   transition-property: background-color, border-color, color, fill, stroke;
 }
@@ -7560,6 +7619,21 @@ select {
 }
 
 .nightwind .bg-red-100 {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
+.nightwind .text-green-600 {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
+.nightwind .bg-green-100 {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
+.nightwind .text-blue-50 {
   transition-duration: 300ms;
   transition-property: background-color, border-color, color, fill, stroke;
 }
@@ -8055,6 +8129,14 @@ textarea {
     margin-left: 0.75rem;
   }
 
+  .sm\:mt-5 {
+    margin-top: 1.25rem;
+  }
+
+  .sm\:mt-6 {
+    margin-top: 1.5rem;
+  }
+
   .sm\:block {
     display: block;
   }
@@ -8089,6 +8171,27 @@ textarea {
 
   .sm\:max-w-lg {
     max-width: 32rem;
+  }
+
+  .sm\:max-w-sm {
+    max-width: 24rem;
+  }
+
+  .sm\:translate-y-0 {
+    --tw-translate-y: 0px;
+    transform: var(--tw-transform);
+  }
+
+  .sm\:scale-95 {
+    --tw-scale-x: .95;
+    --tw-scale-y: .95;
+    transform: var(--tw-transform);
+  }
+
+  .sm\:scale-100 {
+    --tw-scale-x: 1;
+    --tw-scale-y: 1;
+    transform: var(--tw-transform);
   }
 
   .sm\:flex-row-reverse {

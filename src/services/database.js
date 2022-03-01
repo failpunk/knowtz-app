@@ -127,9 +127,9 @@ export function calcDatabaseSize() {
   // return allStrings ? 3 + Math.round(size) + ' KB' : 'Empty (0 KB)'
 }
 
-// knowtz-list
-// knowtz-archive
-
+/**
+ * Export a database to file
+ */
 export function exportDatabase() {
   const notes = fetchAllNotes()
   const list = fetchNotesList()
@@ -140,4 +140,25 @@ export function exportDatabase() {
     notes,
     archive: oldArchiveText,
   }
+}
+
+/**
+ * Restore a database from file
+ */
+export function importDatabase(backupObj) {
+  const { archive, list, notes } = backupObj
+
+  if (archive === undefined || (!list === undefined && !notes === undefined)) {
+    alert("This doesn't look like a valid Knowtz backup file!")
+  }
+
+  saveNotes(list)
+
+  for (const note of notes) {
+    saveNote({ hash: note.hash, text: note.text })
+  }
+
+  saveNote({ hash: ARCHIVE_NOTES_HASH, text: archive })
+
+  window.location.reload()
 }

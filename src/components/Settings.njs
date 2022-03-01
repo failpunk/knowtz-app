@@ -1,5 +1,5 @@
 import Nullstack from 'nullstack'
-import { exportDatabase } from '../services/database'
+import { exportDatabase, importDatabase } from '../services/database'
 
 export default class Settings extends Nullstack {
   isVisble = false
@@ -12,24 +12,54 @@ export default class Settings extends Nullstack {
     this.isVisble = false
   }
 
+  async importFile({ event }) {
+    const file = event.target.files[0]
+    const str = await file.text()
+    importDatabase(JSON.parse(str))
+  }
+
   /**
    * Builds a JSON object in a Blob for download
    */
-  renderExportButton() {
+  renderExportNotes() {
     const obj = exportDatabase()
     var blob = new Blob([JSON.stringify(obj)], { type: 'application/json' })
     const url = window.URL.createObjectURL(blob)
 
     return (
-      <a
-        href={url}
-        download="export.json"
-        textContent="justin.json"
-        type="button"
-        class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none sm:text-sm"
-      >
-        Export Notes
-      </a>
+      <div class="mt-3 text-center sm:mt-5">
+        <div class="mb-3">
+          <h2 class="text-lg leading-6 font-medium text-gray-900">Export Notes</h2>
+          <p class="mt-1 text-sm text-gray-500">Download a single JSON file of your notes, to import on another devices or backup online.</p>
+        </div>
+
+        <a
+          href={url}
+          download="export.json"
+          textContent="justin.json"
+          type="button"
+          class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none sm:text-sm"
+        >
+          Export Notes
+        </a>
+      </div>
+    )
+  }
+
+  renderImportNotes() {
+    return (
+      <div class="mt-3 text-center sm:mt-5">
+        <div class="mb-3">
+          <h2 class="text-lg leading-6 font-medium text-gray-900">Import Notes</h2>
+          <p class="mt-1 text-sm text-gray-500">Import another exported JSON file of your notes.</p>
+        </div>
+
+        <input
+          class="block w-full text-sm text-gray-900 bg-blue-400 rounded-lg border border-blue-300 cursor-pointer dark:text-gray-400 focus:outline-none focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+          type="file"
+          onchange={this.importFile}
+        />
+      </div>
     )
   }
 
@@ -71,15 +101,10 @@ export default class Settings extends Nullstack {
             </div>
             <div>
               <HeaderIcon />
-              <div class="mt-3 text-center sm:mt-5">
-                <div>
-                  <h2 class="text-lg leading-6 font-medium text-gray-900">Export Notes</h2>
-                  <p class="mt-1 text-sm text-gray-500">Download a single JSON file of your notes, to import on another devices or backup online</p>
-                </div>
-              </div>
             </div>
-            <div class="mt-5 sm:mt-6">
-              <ExportButton />
+            <div class="mt-5 sm:mt-6 space-y-10">
+              <ExportNotes />
+              <ImportNotes />
             </div>
           </div>
         </div>

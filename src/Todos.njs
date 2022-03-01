@@ -7,7 +7,7 @@ export default class Todos extends Nullstack {
   todos = []
   notes = []
   menuOpen = false
-  hideCompleted = false
+  hideCompleted = true
 
   async hydrate({ notes }) {
     this.notes = notes

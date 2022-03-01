@@ -51,7 +51,7 @@ export default class Settings extends Nullstack {
       <div class="mt-3 text-center sm:mt-5">
         <div class="mb-3">
           <h2 class="text-lg leading-6 font-medium text-gray-900">Import Notes</h2>
-          <p class="mt-1 text-sm text-gray-500">Import another exported JSON file of your notes.</p>
+          <p class="mt-1 text-sm text-gray-500">Import your exported JSON file of notes. (WARNING: only import files into a fresh copy of knowtz. Importing into a Knowtz app that already contains data will most likely make you sad.)</p>
         </div>
 
         <input

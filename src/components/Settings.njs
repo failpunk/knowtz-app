@@ -12,20 +12,24 @@ export default class Settings extends Nullstack {
     this.isVisble = false
   }
 
-  exportNotes() {
-    console.log('------> EXPORT NOTES')
-    exportDatabase()
-  }
-
+  /**
+   * Builds a JSON object in a Blob for download
+   */
   renderExportButton() {
+    const obj = exportDatabase()
+    var blob = new Blob([JSON.stringify(obj)], { type: 'application/json' })
+    const url = window.URL.createObjectURL(blob)
+
     return (
-      <button
-        onclick={this.exportNotes}
+      <a
+        href={url}
+        download="export.json"
+        textContent="justin.json"
         type="button"
-        class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
+        class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none sm:text-sm"
       >
         Export Notes
-      </button>
+      </a>
     )
   }
 

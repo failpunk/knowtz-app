@@ -65,7 +65,6 @@ export function archiveNote(hash) {
   const noteInfo = findNoteInList(hash)
 
   const textToArchive = noteInfo.name + '\n=====================================\n\n' + noteText
-  console.log('------> textToArchive', textToArchive)
 
   const oldArchiveText = fetchNote(ARCHIVE_NOTES_HASH)
 
@@ -133,5 +132,12 @@ export function calcDatabaseSize() {
 
 export function exportDatabase() {
   const notes = fetchAllNotes()
-  console.log('------> notes', notes)
+  const list = fetchNotesList()
+  const oldArchiveText = fetchNote(ARCHIVE_NOTES_HASH)
+
+  return {
+    list,
+    notes,
+    archive: oldArchiveText,
+  }
 }

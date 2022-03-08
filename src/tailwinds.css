@@ -6715,6 +6715,10 @@ select {
   border-width: 0;
 }
 
+.invisible {
+  visibility: hidden;
+}
+
 .fixed {
   position: fixed;
 }
@@ -6740,6 +6744,19 @@ select {
 
 .right-0 {
   right: 0px;
+}
+
+.-right-10 {
+  right: -2.5rem;
+  right: -2.5rem;
+}
+
+.-right-5 {
+  right: -1.25rem;
+}
+
+.-right-6 {
+  right: -1.5rem;
 }
 
 .z-40 {
@@ -7143,6 +7160,11 @@ select {
   background-color: rgba(209, 250, 229, var(--tw-bg-opacity));
 }
 
+.bg-blue-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(191, 219, 254, var(--tw-bg-opacity));
+}
+
 .bg-opacity-75 {
   --tw-bg-opacity: 0.75;
 }
@@ -7347,12 +7369,26 @@ select {
   color: rgba(5, 150, 105, var(--tw-text-opacity));
 }
 
+.text-blue-200 {
+  --tw-text-opacity: 1;
+  color: rgba(191, 219, 254, var(--tw-text-opacity));
+}
+
+.text-blue-400 {
+  --tw-text-opacity: 1;
+  color: rgba(96, 165, 250, var(--tw-text-opacity));
+}
+
 .line-through {
   text-decoration: line-through;
 }
 
 .opacity-60 {
   opacity: 0.6;
+}
+
+.opacity-0 {
+  opacity: 0;
 }
 
 .shadow-sm {
@@ -7496,7 +7532,22 @@ select {
   transition-property: background-color, border-color, color, fill, stroke;
 }
 
+.nightwind .text-blue-200 {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
+.nightwind .text-blue-400 {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
 .nightwind .text-blue-500 {
+  transition-duration: 300ms;
+  transition-property: background-color, border-color, color, fill, stroke;
+}
+
+.nightwind .bg-blue-200 {
   transition-duration: 300ms;
   transition-property: background-color, border-color, color, fill, stroke;
 }
@@ -7688,6 +7739,14 @@ textarea {
   color: rgba(17, 24, 39, var(--tw-text-opacity));
 }
 
+.group:hover .group-hover\:visible {
+  visibility: visible;
+}
+
+.group:hover .group-hover\:hidden {
+  display: none;
+}
+
 .group:hover .group-hover\:text-gray-900 {
   --tw-text-opacity: 1;
   color: rgba(17, 24, 39, var(--tw-text-opacity));
@@ -7706,6 +7765,10 @@ textarea {
 .group:hover .group-hover\:nightwind .group-hover\:text-gray-900 {
   transition-duration: 300ms;
   transition-property: background-color, border-color, color, fill, stroke;
+}
+
+.peer:hover ~ .peer-hover\:invisible {
+  visibility: hidden;
 }
 
 .hover\:text-gray-500:hover {
@@ -7822,6 +7885,13 @@ textarea {
 .hover\:text-gray-500:hover {
   --tw-text-opacity: 1;
   color: rgba(107, 114, 128, var(--tw-text-opacity));
+}
+
+.hover\:opacity-100:hover {
+  opacity: 1;
+}
+
+.hover\:text-gray-500:hover {
   transition-duration: 300ms;
   transition-property: background-color, border-color, color, fill, stroke;
 }

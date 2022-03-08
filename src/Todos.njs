@@ -1,5 +1,5 @@
 import Nullstack from 'nullstack'
-import { saveNote, fetchAllNotes, fetchNote } from './services/database'
+import { saveNote, fetchAllNotes, fetchNote, findNoteInList } from './services/database'
 
 const UNCHECKED_BRACKET = '[]'
 const CHECKED_BRACKET = '[X]'
@@ -27,6 +27,13 @@ export default class Todos extends Nullstack {
     this.hideCompleted = !this.hideCompleted
     this.menuOpen = false
     mixpanel.track(`Completed Todos ${this.hideCompleted ? 'Hidden' : 'Shown'}`)
+  }
+
+  goToTodo(context) {
+    const { todo } = context
+
+    const note = findNoteInList(todo.hash)
+    context.currentNote = { ...note, text: fetchNote(todo.hash), highlightTodo: todo }
   }
 
   // Sort by not completed first
@@ -109,8 +116,8 @@ export default class Todos extends Nullstack {
     if (!todo) return false
 
     return (
-      <div class="relative flex items-start py-4 border-gray-300">
-        <div class="ml-3 flex items-center h-5 mr-2">
+      <div class="relative flex items-start py-4 border-gray-300 relative group">
+        <div class="ml-3 flex items-center h-5 mr-2 peer">
           <input
             checked={todo.isComplete}
             id="person-2"
@@ -121,9 +128,16 @@ export default class Todos extends Nullstack {
             onclick={this.toggleTodo}
           />
         </div>
+
         <div class="min-w-0 flex-1 text-sm">
-          <label class={`font-medium text-gray-700 ${(todo.isComplete &&= 'line-through opacity-60')}`}>{todo.text}</label>
+          <label onclick={this.goToTodo} todo={todo} class={`font-medium text-gray-700 ${(todo.isComplete &&= 'line-through opacity-60')}`}>
+            {todo.text}
+          </label>
         </div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-400 absolute -right-6 invisible group-hover:visible peer-hover:invisible" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
       </div>
     )
   }

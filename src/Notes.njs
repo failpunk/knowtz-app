@@ -36,7 +36,17 @@ export default class Notes extends Nullstack {
     // console.log('------> Notes UPDATE', currentNote)
     if (currentNote) {
       this.note = currentNote
+
+      if (currentNote.highlightTodo) {
+        this.selectTodo({ todo: currentNote.highlightTodo })
+      }
     }
+  }
+
+  selectTodo({ todo }) {
+    const textarea = document.querySelector('textarea')
+    textarea.focus()
+    textarea.setSelectionRange(todo.startIndex, todo.endIndex)
   }
 
   handleNoteUpdated(context) {

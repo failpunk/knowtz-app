@@ -39,6 +39,7 @@ export default class Notes extends Nullstack {
 
       if (currentNote.highlightTodo) {
         this.selectTodo({ todo: currentNote.highlightTodo })
+        currentNote.highlightTodo = false;  // make sure we don't keep trying to highlight text
       }
     }
   }

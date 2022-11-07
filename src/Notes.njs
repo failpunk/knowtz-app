@@ -1,7 +1,7 @@
 import Nullstack from 'nullstack'
 import SparkleSvg from './svg/SparkleSvg.njs'
 import { debounce } from 'lodash-es'
-import { saveNote, deleteNote, fetchNotesList, fetchNote, updateName, archiveNote } from './services/database'
+import { saveNote, deleteNote, fetchNotesList, fetchNote, updateName, archiveNote, reorderNote } from './services/database'
 import Modal from './components/Modal.njs'
 
 export default class Notes extends Nullstack {
@@ -19,11 +19,25 @@ export default class Notes extends Nullstack {
       }
     })
 
+    // register draggable sorting on the notes list
+    const sortable = new Draggable.Sortable(document.querySelectorAll('.notes-list'), {
+      draggable: 'a',
+    })
+
+    // user has sorted a note
+    sortable.on('sortable:stop', this.handleSortedNote)
+
     if (currentNote) {
       this.note = currentNote
     }
 
     this.save = debounce(this.saveNoteAndNotify, 1000) // todo: move to client???
+  }
+
+  handleSortedNote({ data }) {
+    const { oldIndex, newIndex } = data
+
+    reorderNote(oldIndex, newIndex)
   }
 
   // Save the current note and trigger a context update so we search for todos
@@ -39,7 +53,7 @@ export default class Notes extends Nullstack {
 
       if (currentNote.highlightTodo) {
         this.selectTodo({ todo: currentNote.highlightTodo })
-        currentNote.highlightTodo = false;  // make sure we don't keep trying to highlight text
+        currentNote.highlightTodo = false // make sure we don't keep trying to highlight text
       }
     }
   }

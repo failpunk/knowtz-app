@@ -51,7 +51,7 @@ export default class Layout extends Nullstack {
   renderNotesList() {
     return (
       <nav class="mt-5 flex-1" aria-label="Sidebar">
-        <div class="px-2 space-y-1">
+        <div class="px-2 space-y-1 notes-list">
           {this.notes.map((note) => (
             <NavItem note={note} isActive={note.hash === this.currentNote.hash} />
           ))}

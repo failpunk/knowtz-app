@@ -19,7 +19,14 @@ export function fetchAllNotes() {
 export function fetchNotesList() {
   const lookup = `${NOTES_KEY}-list`
   const rawList = window.localStorage.getItem(lookup)
-  return JSON.parse(rawList) || []
+  const parsedList = JSON.parse(rawList) || []
+
+  // sort list by internal index key
+  parsedList.sort(function (a, b) {
+    return a.index - b.index
+  })
+
+  return parsedList
 }
 
 export function fetchNote(hash) {
@@ -161,4 +168,38 @@ export function importDatabase(backupObj) {
   saveNote({ hash: ARCHIVE_NOTES_HASH, text: archive })
 
   window.location.reload()
+}
+
+export function reorderNote(oldIndex, newIndex) {
+  if (oldIndex === newIndex) return
+
+  let notesList = fetchNotesList()
+
+  // Use splice to remove and then re-add element and let it readjust the indexes.
+  let targetNote = notesList.splice(oldIndex, 1)[0]
+  notesList.splice(newIndex, 0, targetNote)
+
+  // store updated index values of our newly ordered list
+  notesList = notesList.map((note, i) => {
+    note.index = i
+    return note
+  })
+
+  saveNotes(notesList)
+}
+
+// One-time migration to add sort index
+function migrateOldLists() {
+  const notesList = fetchNotesList()
+
+  // only migrate once
+  const note = notesList[0]
+  if (note.index !== undefined) return
+
+  const migratedList = notesList.map((note, i) => {
+    note.index = i
+    return note
+  })
+  console.log('------> migratedList', migratedList)
+  saveNotes(migratedList)
 }

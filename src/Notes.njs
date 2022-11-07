@@ -22,6 +22,7 @@ export default class Notes extends Nullstack {
     // register draggable sorting on the notes list
     const sortable = new Draggable.Sortable(document.querySelectorAll('.notes-list'), {
       draggable: 'a',
+      delay: 200, // prevents notes from not being selected by accidental drag
     })
 
     // user has sorted a note

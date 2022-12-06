@@ -16,6 +16,9 @@ export default class Notes extends Nullstack {
       if (event.key === 'Tab' && event.target.type === 'textarea') {
         event.preventDefault()
         event.target.setRangeText('  ', event.target.selectionStart, event.target.selectionStart, 'end')
+
+        // assign modified value back to state so it does not get out of sync. Nullstack does not know about this change.
+        this.note.text = event.target.value
       }
     })
 

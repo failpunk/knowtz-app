@@ -1,12 +1,17 @@
 import Nullstack from 'nullstack'
 import Application from './src/Application'
 import { fetchNotesList, fetchNote } from './src/services/database'
+import Supabase from './src/services/supabase'
 import mixpanel from 'mixpanel-browser'
 
 const context = Nullstack.start(Application)
 
 // enable debug in dev env
 const { mixpanelKey, mixpanelDebug, supabaseUrl, supabasePubkey } = context.settings
+
+// add supabase to context
+const db = new Supabase(supabaseUrl, supabasePubkey)
+context.db = db
 
 mixpanel.init(mixpanelKey, { debug: mixpanelDebug === 'true' })
 mixpanel.track('Knowtz Started')
@@ -23,20 +28,8 @@ if (firstNote.hash) {
 }
 
 context.start = async function start() {
-  var myHeaders = new Headers()
-  myHeaders.append('apikey', supabasePubkey)
-  myHeaders.append('Authorization', `Bearer ${supabasePubkey}`)
-
-  var requestOptions = {
-    method: 'GET',
-    headers: myHeaders,
-    redirect: 'follow',
-  }
-
-  const url = supabaseUrl + `/rest/v1/note`
-  const response = await fetch(url, requestOptions).catch((error) => console.log('error', error))
-
-  console.log('------> json', await response.json())
+  const notes = await db.getNotes()
+  console.log('------> notes', JSON.stringify(notes, null, 2))
 }
 
 export default context

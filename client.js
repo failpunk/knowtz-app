@@ -28,6 +28,12 @@ if (firstNote.hash) {
 }
 
 context.start = async function start() {
+  console.log('------> START')
+
+  db.doClient()
+
+
+
   const notes = await db.getNotes()
   console.log('------> notes', JSON.stringify(notes, null, 2))
 }

@@ -1,7 +1,11 @@
+import { createClient } from '@supabase/supabase-js'
+
 export default class Supabase {
   constructor(supabaseUrl, supabasePubkey) {
     this.supabaseUrl = supabaseUrl
     this.supabasePubkey = supabasePubkey
+
+    this.client = createClient(supabaseUrl, supabasePubkey)
   }
 
   requestOptions(method = 'GET') {
@@ -25,5 +29,12 @@ export default class Supabase {
 
   async getNotes() {
     return this.select('note')
+  }
+
+  async doClient() {
+    console.log('------> doClient')
+    const { data, error } = await this.client.from('note').select()
+    console.log('------> error', error)
+    console.log('------> data', data)
   }
 }
